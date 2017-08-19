@@ -1,0 +1,63 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Author: SunGyo Kim
+# Email: Kimsg1984@gmail.com
+# irc.freenode #ubuntu-ko Sungyo
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import os
+import sys
+reload(sys)
+import signal
+
+if os.path.isdir(os.path.join(".","src")) and os.path.isfile(os.path.join(".","setup.py")):
+	sys.path.append(os.path.realpath("src"))
+
+try:
+	from PyQt4.QtGui import QApplication
+except ImportError, err:
+	sys.stderr.write("Error: %s%s" % (str(err), os.linesep))
+	sys.exit(1)
+
+try:
+	from hanibaram.hanibaram import NoteEditor
+except ImportError, err:
+	sys.stderr.write("Error: %s%s" % (str(err), os.linesep))
+	sys.exit(1)
+
+class Main():
+	def __init__(self):
+		self.app = QApplication(sys.argv)
+		self.editor = NoteEditor()
+		self.app.installEventFilter(self.editor)
+		self.editor.show()
+		self.editor.editor.textCursor().insertText('class \n')
+		self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> \n')
+		print(self.editor.editor.toHtml())
+		# self.editor.editor.textCursor().insertHtml('<a href="https://google.com">google</a> \n')
+		# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> ')
+
+	def exec_(self):
+		try:
+			signal.signal(signal.SIGINT, signal.SIG_DFL)
+			sys.exit(self.app.exec_())
+
+		except KeyboardInterrupt:
+	 		pass
+
+if __name__ == '__main__':
+	m = Main()
+	m.exec_()

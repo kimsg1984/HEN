@@ -1,0 +1,1073 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"vi",
+				"virtual_cursor"
+			],
+			[
+				"setSize",
+				"setSizePolicy	function"
+			],
+			[
+				"add",
+				"addWidget	function"
+			],
+			[
+				"pix",
+				"pixmap2	statement"
+			],
+			[
+				"set",
+				"setLayout	function"
+			],
+			[
+				"setB",
+				"setBackgroundBrush	function"
+			],
+			[
+				"def",
+				"defs	Method"
+			],
+			[
+				"in",
+				"inputContext	function"
+			],
+			[
+				"mou",
+				"mouseReleaseEvent	function"
+			],
+			[
+				"dic",
+				"dictionary	statement"
+			],
+			[
+				"type",
+				"types_of_book	statement"
+			],
+			[
+				"xpa",
+				"xpath_content	param"
+			],
+			[
+				"xpath",
+				"xpath_content_parser"
+			],
+			[
+				"St",
+				"StandardKoreanDictionary	class"
+			],
+			[
+				"pa",
+				"params	statement"
+			],
+			[
+				"res",
+				"result_file	statement"
+			],
+			[
+				"tabl",
+				"table_script	statement"
+			],
+			[
+				"typ",
+				"types_of_book	statement"
+			],
+			[
+				"p",
+				"pyperclip	module"
+			],
+			[
+				"ori",
+				"origin_url"
+			],
+			[
+				"pro",
+				"pronoun	statement"
+			],
+			[
+				"mean",
+				"meaning_limit"
+			],
+			[
+				"ret",
+				"return_all	param"
+			],
+			[
+				"on",
+				"onDeleteImage	function"
+			],
+			[
+				"is",
+				"isdir	function"
+			],
+			[
+				"e",
+				"exists	function"
+			],
+			[
+				"ex",
+				"expanduser	function"
+			],
+			[
+				"T",
+				"Temporary"
+			],
+			[
+				"P",
+				"Parent	statement"
+			],
+			[
+				"onRe",
+				"onRecentFiles"
+			],
+			[
+				"ID_A",
+				"ID_ANY	statement"
+			],
+			[
+				"Lo",
+				"Logger"
+			],
+			[
+				"DF_",
+				"DF_TEXT	statement"
+			],
+			[
+				"DF",
+				"DF_FILENAME	statement"
+			],
+			[
+				"Get",
+				"GetBitmap	function"
+			],
+			[
+				"opt",
+				"optionparser	optionparser"
+			],
+			[
+				"Op",
+				"OpenFolder"
+			],
+			[
+				"folder",
+				"folder_flip"
+			],
+			[
+				"whi",
+				"which_way_to_go	statement"
+			],
+			[
+				"next",
+				"nextFolder	function"
+			],
+			[
+				"fo",
+				"folder_flip	statement"
+			],
+			[
+				"li",
+				"listdir	function"
+			],
+			[
+				"Im",
+				"ImageCtrl	statement"
+			],
+			[
+				"save",
+				"save_folder_jackpum	statement"
+			],
+			[
+				"save_fo",
+				"save_folder_jackpum	statement"
+			],
+			[
+				"Main",
+				"MainClass"
+			],
+			[
+				"ch",
+				"chapter_and_verse	statement"
+			],
+			[
+				"cont",
+				"content_per_line"
+			],
+			[
+				"debug",
+				"debug_mode	statement"
+			],
+			[
+				"file",
+				"file_name	param"
+			],
+			[
+				"anoth",
+				"another_file_name	statement"
+			],
+			[
+				"fil",
+				"filename	statement"
+			],
+			[
+				"com",
+				"comment	param"
+			],
+			[
+				"d",
+				"download_file	function"
+			],
+			[
+				"t",
+				"telepot	module"
+			],
+			[
+				"__",
+				"__file__	instance"
+			],
+			[
+				"list",
+				"list_name	statement"
+			],
+			[
+				"con",
+				"configparser	module"
+			],
+			[
+				"re",
+				"recipe_file	param"
+			],
+			[
+				"get",
+				"getcwd	function"
+			],
+			[
+				"cmd",
+				"cmd_line"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"no",
+				"nodeManager	class"
+			],
+			[
+				"cu",
+				"current_dir	statement"
+			],
+			[
+				"bin",
+				"bin_path	statement"
+			],
+			[
+				"dir_b",
+				"dir_binarybox	statement"
+			],
+			[
+				"i",
+				"islink	function"
+			],
+			[
+				"bi",
+				"binaries	statement"
+			],
+			[
+				"dir",
+				"dir_bin	statement"
+			],
+			[
+				"gen",
+				"generate_bin_others	function"
+			],
+			[
+				"genera",
+				"generate_bin_others	function"
+			],
+			[
+				"gene",
+				"generate_binary	function"
+			],
+			[
+				"path",
+				"pathjoin"
+			],
+			[
+				"acce",
+				"access_key"
+			],
+			[
+				"ip",
+				"ip_address	statement"
+			],
+			[
+				"return_list_b",
+				"return_list_by_client_name	function"
+			],
+			[
+				"return_list_",
+				"return_list_by_mac	function"
+			],
+			[
+				"print_list_b",
+				"print_list_by_client_name	function"
+			],
+			[
+				"print_list_by",
+				"print_list_by_mac	function"
+			],
+			[
+				"dhcpd",
+				"dhcpd_conf"
+			],
+			[
+				"tab",
+				"tab_count_min	statement"
+			],
+			[
+				"retu",
+				"return_list	param"
+			],
+			[
+				"ser",
+				"server_names	statement"
+			],
+			[
+				"dhcp",
+				"dhcpd_conf"
+			],
+			[
+				"print",
+				"print_list	function"
+			],
+			[
+				"dh",
+				"dhcp_servers	statement"
+			],
+			[
+				"server",
+				"server_names"
+			],
+			[
+				"ren",
+				"renew_dhcp_list	function"
+			],
+			[
+				"dhc",
+				"dhcp_ips	statement"
+			],
+			[
+				"DHCP",
+				"DHCP_Manager	class"
+			],
+			[
+				"return_list",
+				"return_list_by_ip"
+			],
+			[
+				"gr",
+				"group_dhcpd_conf	statement"
+			],
+			[
+				"lis",
+				"list_by_name	statement"
+			],
+			[
+				"DH",
+				"DHCP_Server	class"
+			],
+			[
+				"di",
+				"dictionary_to_add	param"
+			],
+			[
+				"oid",
+				"oid_dictionary"
+			],
+			[
+				"ot",
+				"optionparser	optionparser"
+			],
+			[
+				"log",
+				"log_parsing	function"
+			],
+			[
+				"start",
+				"start_time"
+			],
+			[
+				"cli",
+				"client_name	statement"
+			],
+			[
+				"date",
+				"datetime	class"
+			],
+			[
+				"le",
+				"lease_list	statement"
+			],
+			[
+				"_",
+				"_test	statement"
+			],
+			[
+				"off",
+				"offset_file"
+			],
+			[
+				"L",
+				"LogTail	class"
+			],
+			[
+				"c_",
+				"c_split	statement"
+			],
+			[
+				"cm",
+				"cmd_location	statement"
+			],
+			[
+				"curre",
+				"current_verb	statement"
+			],
+			[
+				"Ele",
+				"Element_bible"
+			],
+			[
+				"El",
+				"Element_book"
+			],
+			[
+				"E",
+				"Element	class"
+			],
+			[
+				"boo",
+				"book_abbri_eng	statement"
+			],
+			[
+				"book",
+				"book_abbri_ko	statement"
+			],
+			[
+				"bibl",
+				"bible_text_file"
+			],
+			[
+				"In",
+				"IndexError	class"
+			],
+			[
+				"w",
+				"write	function"
+			],
+			[
+				"ET",
+				"ElementTree"
+			],
+			[
+				"Elem",
+				"ElementTree"
+			],
+			[
+				"Et",
+				"ElementTree"
+			],
+			[
+				"pic",
+				"picture_w"
+			],
+			[
+				"win",
+				"window_h"
+			],
+			[
+				"S",
+				"SERVER_NAME"
+			],
+			[
+				"echo",
+				"echoHelp"
+			],
+			[
+				"Fil",
+				"FileManager"
+			],
+			[
+				"info",
+				"info_list"
+			],
+			[
+				"stor",
+				"store_code"
+			],
+			[
+				"to",
+				"totom_command_key"
+			],
+			[
+				"current_",
+				"current_window_id"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: #--"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Channel"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 428.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/sungyo/Unison/Application/WestWind/src/westwind/old/highlighter.py",
+		"/home/sungyo/Unison/Application/WestWind/src/westwind/highlighter.py",
+		"/home/sungyo/바탕화면/untitled.html",
+		"/home/sungyo/Unison/Application/WestWind/setup.py",
+		"/home/sungyo/history.txt",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/python_printdir.sublime-snippet",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/untitled.sublime-snippet",
+		"/home/sungyo/Unison/Application/WestWind/westwind.py",
+		"/home/sungyo/Unison/script/python/PyQt/pyhtmleditor/pyhtmleditor",
+		"/home/sungyo/Unison/Application/WestWind/COPYING",
+		"/home/sungyo/Unison/script/python/PyQt/syntaxhighlighter.py",
+		"/home/sungyo/Unison/Application/GoodViewer/imageCtrl.py",
+		"/home/sungyo/Unison/script/python/PyQt/pyhtmleditor/src/pyhtmleditor/htmleditor.py",
+		"/home/sungyo/Unison/Application/tomboy-source/Tomboy/Tomboy.cs",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/Jedi - Python autocompletion/Default.sublime-keymap",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/Jedi - Python autocompletion/sublime_jedi.sublime-settings",
+		"/home/sungyo/Unison/script/python/PyQt/pyhtmleditor/src/pyhtmleditor/highlighter.py",
+		"/home/sungyo/Unison/script/python/PyQt/pyhtmleditor/src/pyhtmleditor/ui/htmleditor_ui.py",
+		"/home/sungyo/Unison/script/python/PyQt/pyhtmleditor/src/pyhtmleditor/__init__.py",
+		"/home/sungyo/Unison/script/conky/duo11",
+		"/opt/binarybox/module/python/WEB.py",
+		"/opt/binarybox/module/python/BinaryManager/_Core.py",
+		"/opt/binarybox/crontab/dailylife/dailylife.py",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/john1.txt",
+		"/opt/binarybox/module/python/URL.py",
+		"/opt/binarybox/crontab/dailylife/dailylife.sh",
+		"/home/sungyo/Unison/script/python/PyQt/resizer_2.py",
+		"/home/sungyo/Unison/script/python/PyQt/insert_QlineEdit_to_QtextEdit.py",
+		"/home/sungyo/calculate.py",
+		"/home/sungyo/Unison/script/python/PyQt/test.py",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap09/texteditor.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap09/sditexteditor.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap09/newsreader.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap09/vehiclerentaldlg.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap09/findandreplacedlg.py",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap09/textedit.py",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap09/sditexteditor2.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap09/tabbededitor.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap13/pythoneditor.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap12/pagedesigner.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap12/multipedes3.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap16/treeoftable.py",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap11/labelledwidgets.py",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap12/multipedes.pyw",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/<>.sublime-snippet",
+		"/home/sungyo/Unison/script/python/PyQt/resizer_3.py",
+		"/home/sungyo/Unison/script/python/PyQt/resizer_1.py",
+		"/home/sungyo/Unison/script/python/PyQt/rubber_band_event.py",
+		"/home/sungyo/Unison/script/python/PyQt/Writer-Tutorial/Part-3/part-3.py",
+		"/usr/lib/python2.7/dist-packages/PyQt4/__init__.py",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/startpython.sublime-snippet",
+		"/usr/lib/python2.7/dist-packages/PyQt4/QtGui.so",
+		"/home/sungyo/test.py",
+		"/home/sungyo/Unison/script/python/PyQt/detect_change_event.py",
+		"/home/sungyo/Unison/script/python/PyQt",
+		"/home/sungyo/다운로드/home-automation-master/temperv14/temperv14.c",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap04/calculate.py",
+		"/home/sungyo/Unison/script/python/PyQt/Writer-Tutorial/Part-4/part4.py",
+		"/home/sungyo/Unison/script/python/PyQt/Writer-Tutorial/Part-1/part-1.py",
+		"/home/sungyo/Unison/script/python/PyQt/Writer-Tutorial/Part-2/part-2.py",
+		"/home/sungyo/Unison/script/python/PyQt/Drawing.py",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap13/printing.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap13/resources.qrc",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap04/calculate.pyw",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap04/alert.pyw",
+		"/opt/binarybox/applications/dictionary/dict.py",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/ode.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/outos_neuter.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/autos_neuter.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/ekeinos_nt.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/abbreviation.py",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/ekeinos_독립.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/script.py",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/result.txt",
+		"/opt/binarybox/applications/dictionary/Dictionaries.py",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/ekeinos.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/ekeinos_neuter.txt",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap04/alert_extra.pyw",
+		"/home/sungyo/test.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/BGT_NT.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/ekenos_neuter.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/aoutos.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/outos.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/result3.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/result2.txt",
+		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/result1.txt",
+		"/home/sungyo/바탕화면/result1.txt",
+		"/home/sungyo/바탕화면/result.txt",
+		"/home/sungyo/script.py",
+		"/opt/binarybox/module/python/IO.py",
+		"/home/sungyo/바탕화면/1,2,3,4.txt",
+		"/opt/binarybox/applications/dictionary/IO.py",
+		"/opt/binarybox/module/python-custom/IO.py",
+		"/home/sungyo/바탕화면/test.py",
+		"/opt/binarybox/module/python-custom/OS.py",
+		"/opt/binarybox/module/python-custom/WEB.py",
+		"/home/sungyo/Unison/script/project/webnote/xmlparser.py",
+		"/opt/binarybox/bin/bin-private/touch-switch",
+		"/opt/binarybox/bin/bin-private/duo-key-control",
+		"/home/sungyo/바탕화면/greek.txt",
+		"/opt/binarybox/applications/greek_bible/test.txt",
+		"/opt/binarybox/applications/greek_bible/sblgnt.py",
+		"/opt/binarybox/applications/greek_bible/bin/greek",
+		"/home/sungyo/greek.txt",
+		"/home/sungyo/Unison/notefile/tomboy/e6ed4c12-409e-4320-a5fe-89b1d777a196.note",
+		"/home/sungyo/djangogirls/blog/models.py",
+		"/home/sungyo/helloworld/elections/views.py",
+		"/usr/local/lib/python3.4/dist-packages/telepot/api.py",
+		"/usr/lib/python3.4/http/__init__.py",
+		"/usr/local/lib/python3.4/dist-packages/telepot/__init__.py",
+		"/usr/lib/python3.4/http/client.py",
+		"/run/user/1000/gvfs/sftp:host=hp380/home/sungyo/Zentyal/mnt/sda/sungyo/문서/backup/Good Reader Cloud/팁암기/44.At-15-16.caf",
+		"/opt/binarybox/applications/telepy/telepy.py",
+		"/opt/binarybox/applications/telepy/telemessage",
+		"/opt/binarybox/applications/telepy/telepy.ini",
+		"/opt/binarybox/applications/telepy/teledemon",
+		"/usr/local/lib/python3.4/dist-packages/telebot/__init__.py",
+		"/usr/local/lib/python2.7/dist-packages/telepot/__init__.py",
+		"/home/sungyo/test2.py",
+		"/home/sungyo/바탕화면/exif2.sh",
+		"/home/sungyo/바탕화면/jackpum_gel2.py",
+		"/opt/binarybox/module/o",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/Default.sublime-keymap",
+		"/home/sungyo/Unison/Application/GoodViewer/BO/thumbnailctrl.py",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/optionparser.sublime-snippet",
+		"/home/sungyo/Unison/Application/GoodViewer/MenuBar/ViewerMenuBar.py",
+		"/home/sungyo/Unison/Application/GoodViewer/MenuBar/ThumbScrollMenuBar.py",
+		"/run/user/1000/gvfs/sftp:host=hp380/home/sungyo/Zentyal/mnt/sda/sungyo/문서/사진/각종바탕화면/ImageOfGod/slrclub/jackpum_gel2.py"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"menuBar",
+			"setupFileMenu",
+			"underline",
+			"anchor",
+			"QtCore.",
+			"QtGui.",
+			"#print",
+			"[",
+			"print",
+			"print('[%s]if len(text) > 1:' %self.n)",
+			"selected_text",
+			"QtCore.",
+			"QtGui.",
+			"  ",
+			"browser",
+			"       ",
+			"   ",
+			"Gt",
+			"self.sys",
+			"signal",
+			"WebView",
+			"Highlighter",
+			"m_colors",
+			"hilite",
+			"highlighter",
+			"Highlighter",
+			"charformat",
+			"format",
+			"Arrow",
+			"QWidget.setCursor (self, ",
+			"lineedit",
+			"_fromUtf8",
+			"_fromUtf",
+			"webview",
+			"webView",
+			"page",
+			"page()",
+			"webView",
+			"verticalLayout_2",
+			"QtWebKit",
+			"webview",
+			"webkit",
+			"edit",
+			"browser",
+			"brow",
+			"ProcessRenameLinkUpdate",
+			"notes ",
+			"notes",
+			"update",
+			"watcher\\.",
+			" watcher ",
+			"watcher",
+			"UpdateNoteTitle",
+			"Renaming note from",
+			"create",
+			"dohighlight",
+			"highligh",
+			"TitleTrie",
+			"Matching Note title",
+			" Matching Note title",
+			" Matching Note title ",
+			"gtk",
+			"InvalidateText",
+			" title ",
+			"title",
+			"addin_mgr",
+			"^\\./",
+			"MinValue",
+			"ReadFile",
+			"Instance",
+			" Instance ",
+			"Instance",
+			"NoteArchiver",
+			"NoteArchi",
+			"CreateExistingNote",
+			" Load\\(",
+			" Load \\(",
+			" Load (",
+			" Load ",
+			"Note",
+			"links_note",
+			"logger",
+			"\\./",
+			"select",
+			"virtual_cursor",
+			"QtCore.",
+			"cursor",
+			"cursor\n",
+			"eventFilter",
+			"mouseMoveEvent",
+			"mouseReleaseEvent",
+			"mouser",
+			"modify",
+			"QtWebKit",
+			"webView",
+			"execCommand",
+			"url",
+			"brow",
+			"textedit",
+			"tabWidget",
+			"highlighter",
+			"bro",
+			"brow",
+			"textedit",
+			"]",
+			"font",
+			"ping",
+			"]",
+			"layout",
+			"form",
+			"Form",
+			"form",
+			"(.+)",
+			",",
+			"# print\\('(.+?)\\n",
+			"# print\\('(.+)",
+			"f.rm",
+			"self.f.",
+			")",
+			"%",
+			"verticalAlignment",
+			",",
+			"size",
+			"self",
+			"self.view",
+			"box",
+			"QtCore.",
+			"layout"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"",
+			"print ('\\1: %s' %f.\\1)",
+			"",
+			"f.",
+			"\"",
+			"'",
+			",\n",
+			",\n,\n",
+			",\n\n",
+			",\n",
+			"(\\1)",
+			"[\\1],",
+			"\\1, '\\2'",
+			"'\\1', ",
+			", ",
+			"\\,",
+			"\\1 \\2\\3",
+			"localhost",
+			"\\1 \\2\\3",
+			" ",
+			"1Tim.",
+			"2Cor.",
+			"1Cor.",
+			"2Pet.",
+			"1Pet.",
+			"1Thess.",
+			".",
+			"; ",
+			" ",
+			"",
+			"\n",
+			"xpath_parser",
+			"_get_html_by_searching",
+			"get_html_by_searching",
+			"on_search",
+			"search",
+			"_dict_to_string",
+			"figuring_language",
+			"get_xpath_fromWEB",
+			"xpath_contentParser",
+			"",
+			"\n",
+			"\\n",
+			"limit",
+			"\n\\1)",
+			"",
+			"\n삼상17:\\",
+			"\n삼상17:\\1)",
+			"\n삼상16:\\1)",
+			"\n삼상15:\\1)",
+			"\n삼상14:\\1)",
+			"\n삼상13:\\1)",
+			"\n삼상12:\\1)",
+			"\n삼상11:\\1)",
+			"\n삼상10:\\1)",
+			"\n삼상9:\\1)",
+			"\n삼상8:\\1)",
+			"\n삼상7:\\1)",
+			"\n삼상6:\\1)",
+			"\n삼상5:\\1)",
+			"삼상5:\\1)\n",
+			"\n시136:\\1)",
+			"\n삼상4:\\1)",
+			"삼상4:\\1)\n",
+			"삼상4:\\1)",
+			"\n삼상3:\\1)",
+			"\n삼상2:\\1)",
+			"\n삼상1:\\1)",
+			"#!/",
+			", ",
+			"'\\1'",
+			", ",
+			"' ",
+			"\n합2:\\1)",
+			"\n합3:\\1)",
+			"\n합2:\\1)",
+			"\n합",
+			"\ngkq",
+			"합1:\\1)",
+			"합1:\\1)\n\n",
+			"합1:\\1)\n",
+			"합1:\\1)",
+			"Open Webpage",
+			"Open Folder",
+			"onRightClickMenuSelection",
+			"self.menu_title_by_id",
+			"orRightClickMenuSelection",
+			"which_way_to_go",
+			"self.gel_list_file",
+			"\n",
+			"삼하5:",
+			"",
+			"\n",
+			"}\n",
+			"}",
+			"{n}",
+			"}\n",
+			"}",
+			"{n}",
+			"\n",
+			" ",
+			"\n",
+			" ",
+			"(\\1)",
+			"",
+			"출3:\\1)",
+			"출3:\\1) ",
+			"출3:\\1)",
+			"",
+			"행4:\\1)",
+			"행",
+			"\n",
+			"(\\1)",
+			"\n",
+			"행28:\\1)",
+			"",
+			"행27:\\1)",
+			"삼하",
+			" 삼하3:\\1)",
+			" ",
+			"dir_\\1",
+			"base_dir",
+			"시15:\\1)",
+			" ",
+			"@@logserver.int:1025",
+			":1024",
+			"\\1)",
+			"벧전1:\\1)"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 44.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 161.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 235.0,
+	"status_bar_visible": true
+}
