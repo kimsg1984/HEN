@@ -50,7 +50,6 @@ class NoteEditor(QDialog):
 		self.setupMenu()
 		self.setLayout(layout)
 
-
 		self.highlight = Highlighter(self.editor.document())
 		self.highlight.addKeyword('class')
 		self.resize(500, 500)
@@ -58,12 +57,54 @@ class NoteEditor(QDialog):
 		self.mouse_under_text = ''
 
 	def setupMenu(self):
+
 		fileMenu = QMenu("&File", self)
 		self.menuBar.addMenu(fileMenu)
+		fileMenu.addAction("&Save...", self.saveFile, "Ctrl+S")
+
+		editMenu = QMenu("&Edit", self)
+		self.menuBar.addMenu(editMenu)
+		editMenu.addAction("&Bord", self.textBold, "Ctrl+B")
+		editMenu.addAction("&Italic", self.textItalic, "Ctrl+I")
+		editMenu.addAction("&Highlight", self.textHighlight, "Ctrl+H")
+		editMenu.addAction("&Strikethrough", self.textStrikethrough, "Ctrl+T")
+		editMenu.addAction("&Underline", self.textUnderline, "Ctrl+U")
+		# editMenu.addAction("&Bord...", self.textBold, "Ctrl+B")
+
+	def saveFile(self):
+		print(self.editor.toHtml())
+
+	def textBold(self):
+		if self.editor.fontWeight() == QFont.Bold:
+			self.editor.setFontWeight(QFont.Normal)
+		else:
+			self.editor.setFontWeight(QFont.Bold)
+
+	def textItalic(self):
+		state = self.editor.fontItalic()
+		self.editor.setFontItalic(not state)
+
+	def textHighlight(self):
+		color = self.editor.textBackgroundColor()
+		if color.name() == '#ffff00':
+			color.setNamedColor('#ffffff')
+		else:
+			color.setNamedColor('#ffff00')
+		self.editor.setTextBackgroundColor(color)
+
+	def textStrikethrough(self):
+		fmt = self.editor.currentCharFormat()
+		fmt.setFontStrikeOut(not fmt.fontStrikeOut())
+		self.editor.setCurrentCharFormat(fmt)
+
+	def textUnderline(self):
+		state = self.editor.fontUnderline()
+		self.editor.setFontUnderline(not state)
+
 
 	def eventFilter(self, source, event):
 		if event.type() == QEvent.MouseMove:
-			if event.buttons() == Qt.NoButton:				
+			if event.buttons() == Qt.NoButton:
 				pos = event.pos()
 				# print(pos)
 				virtual_cursor =  self.editor.cursorForPosition(event.pos()) # 설렉션 잡을 때 마다 생성해줘야 함.
@@ -86,6 +127,7 @@ class NoteEditor(QDialog):
 				else:
 					self.mouse_under_text =''
 					pass # do other stuff
-	
+		if event.type() == QEvent.KeyPress:
+			print(event.key())
 		return self.editor.eventFilter(self, event)
 

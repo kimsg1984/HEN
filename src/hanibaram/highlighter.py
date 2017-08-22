@@ -74,7 +74,7 @@ class Highlighter(QSyntaxHighlighter):
 
 	def addKeyword(self, keyword):
 		self.highlightingRules.append((QRegExp("\\b%s\\b" %keyword), self.keywordFormat))
-
+		# self.highlightingRules.append((QRegExp("\\b%s\\b" %keyword), self.keywordFormat))
 
 	def highlightBlock(self, text):
 		for pattern, format in self.highlightingRules:
@@ -84,7 +84,6 @@ class Highlighter(QSyntaxHighlighter):
 				length = expression.matchedLength()
 				self.setFormat(index, length, format)
 				index = expression.indexIn(text, index + length)
-
 		self.setCurrentBlockState(0)
 
 		startIndex = 0
@@ -105,13 +104,22 @@ class Highlighter(QSyntaxHighlighter):
 			# startIndex = self.commentStartExpression.indexIn(text,
 			#         startIndex + commentLength);
 
+class Main():
+	def __init__(self):
+		import sys
+		self.app = QApplication(sys.argv)
+		self.window = MainWindow()
+		self.window.resize(640, 512)
+		self.window.highlighter.addKeyword('class')
+		self.window.editor.textCursor().insertText('class')
+		self.window.show()
+
+	def exec_(self):
+		self.app.exec_()
 
 if __name__ == '__main__':
-	import sys
-	app = QApplication(sys.argv)
-	window = MainWindow()
-	window.resize(640, 512)
-	window.highlighter.addKeyword('class')
-	window.editor.textCursor().insertText('class')
-	window.show()
-	app.exec_()
+	m = Main()
+	m.exec_()
+
+
+# if __name__ == '__main__':

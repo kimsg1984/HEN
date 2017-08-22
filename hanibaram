@@ -46,7 +46,6 @@ class Main():
 		self.editor.show()
 		self.editor.editor.textCursor().insertText('class \n')
 		self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> \n')
-		print(self.editor.editor.toHtml())
 		# self.editor.editor.textCursor().insertHtml('<a href="https://google.com">google</a> \n')
 		# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> ')
 

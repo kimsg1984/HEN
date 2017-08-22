@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"St",
+				"textStrikethrough"
+			],
+			[
 				"vi",
 				"virtual_cursor"
 			],
@@ -54,10 +58,6 @@
 			[
 				"xpath",
 				"xpath_content_parser"
-			],
-			[
-				"St",
-				"StandardKoreanDictionary	class"
 			],
 			[
 				"pa",
@@ -519,6 +519,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/hanibaram/hanibaram.py",
+			"settings":
+			{
+				"buffer_size": 4223,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "hanibaram",
+			"settings":
+			{
+				"buffer_size": 1923,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/hanibaram/highlighter.py",
+			"settings":
+			{
+				"buffer_size": 3730,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\\n\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\\np, li { white-space: pre-wrap; }\\n</style></head><body style=\" font-family:\\'Courier\\'; font-size:10pt; font-weight:400; font-style:normal;\">\\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;\">class</p></body></html>'",
+			"settings":
+			{
+				"buffer_size": 475,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"command_palette":
@@ -584,6 +616,10 @@
 	},
 	"file_history":
 	[
+		"/opt/binarybox/applications/telepy/.gitignore",
+		"/opt/binarybox/applications/dictionary/.gitignore",
+		"/home/sungyo/Unison/Application/Hanibaram/setup.py",
+		"/home/sungyo/Unison/Application/Hanibaram/.gitignore",
 		"/home/sungyo/Unison/Application/WestWind/src/westwind/old/highlighter.py",
 		"/home/sungyo/Unison/Application/WestWind/src/westwind/highlighter.py",
 		"/home/sungyo/바탕화면/untitled.html",
@@ -707,11 +743,7 @@
 		"/home/sungyo/바탕화면/jackpum_gel2.py",
 		"/opt/binarybox/module/o",
 		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/Default.sublime-keymap",
-		"/home/sungyo/Unison/Application/GoodViewer/BO/thumbnailctrl.py",
-		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/optionparser.sublime-snippet",
-		"/home/sungyo/Unison/Application/GoodViewer/MenuBar/ViewerMenuBar.py",
-		"/home/sungyo/Unison/Application/GoodViewer/MenuBar/ThumbScrollMenuBar.py",
-		"/run/user/1000/gvfs/sftp:host=hp380/home/sungyo/Zentyal/mnt/sda/sungyo/문서/사진/각종바탕화면/ImageOfGod/slrclub/jackpum_gel2.py"
+		"/home/sungyo/Unison/Application/GoodViewer/BO/thumbnailctrl.py"
 	],
 	"find":
 	{
@@ -730,6 +762,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"text",
+			"QColor()",
+			"f.browser",
+			"text",
+			"..",
+			"pass",
+			"bold",
+			"QtGui.",
+			"text",
+			"bold",
+			"	window",
+			"window",
+			"	app",
+			"app",
 			"menuBar",
 			"setupFileMenu",
 			"underline",
@@ -843,21 +889,7 @@
 			"Form",
 			"form",
 			"(.+)",
-			",",
-			"# print\\('(.+?)\\n",
-			"# print\\('(.+)",
-			"f.rm",
-			"self.f.",
-			")",
-			"%",
-			"verticalAlignment",
-			",",
-			"size",
-			"self",
-			"self.view",
-			"box",
-			"QtCore.",
-			"layout"
+			","
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -865,6 +897,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"QTextEdit",
 			"",
 			"print ('\\1: %s' %f.\\1)",
 			"",
@@ -991,8 +1024,7 @@
 			" ",
 			"@@logserver.int:1025",
 			":1024",
-			"\\1)",
-			"벧전1:\\1)"
+			"\\1)"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1003,8 +1035,116 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/hanibaram/hanibaram.py",
+					"settings":
+					{
+						"buffer_size": 4223,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4154,
+								4154
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3675.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "hanibaram",
+					"settings":
+					{
+						"buffer_size": 1923,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1016,
+								1016
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 384.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/hanibaram/highlighter.py",
+					"settings":
+					{
+						"buffer_size": 3730,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2693,
+								2693
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2045.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"settings":
+					{
+						"buffer_size": 475,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								475,
+								475
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1041,7 +1181,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 161.0
+		"height": 138.0
 	},
 	"replace":
 	{
@@ -1068,6 +1208,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 235.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true
 }

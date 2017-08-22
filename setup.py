@@ -6,7 +6,7 @@ from distutils.core import setup
 
 sys.path.append(os.path.realpath("src"))
 
-setup(name = "hanibaram ",
+setup(name = "hanibaram",
         version = "0.1",
         description = "PyQt Wiki-Wiki Text Editor",
         long_description = "Python port of Wiki-Wiki texteditor.",
