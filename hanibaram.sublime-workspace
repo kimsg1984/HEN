@@ -523,7 +523,23 @@
 			"file": "src/hanibaram/hanibaram.py",
 			"settings":
 			{
-				"buffer_size": 4223,
+				"buffer_size": 4860,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/sungyo/Unison/script/Board-parsing/IO.py",
+			"settings":
+			{
+				"buffer_size": 3482,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +547,15 @@
 			"file": "hanibaram",
 			"settings":
 			{
-				"buffer_size": 1923,
+				"buffer_size": 2246,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/hanibaram/note.py",
+			"settings":
+			{
+				"buffer_size": 668,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,7 +563,7 @@
 			"file": "src/hanibaram/highlighter.py",
 			"settings":
 			{
-				"buffer_size": 3730,
+				"buffer_size": 2709,
 				"line_ending": "Unix"
 			}
 		},
@@ -616,6 +640,8 @@
 	},
 	"file_history":
 	[
+		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/__init__.py",
+		"/home/sungyo/Unison/Application/Hanibaram/src/notes/test.note",
 		"/opt/binarybox/applications/telepy/.gitignore",
 		"/opt/binarybox/applications/dictionary/.gitignore",
 		"/home/sungyo/Unison/Application/Hanibaram/setup.py",
@@ -741,9 +767,7 @@
 		"/home/sungyo/test2.py",
 		"/home/sungyo/바탕화면/exif2.sh",
 		"/home/sungyo/바탕화면/jackpum_gel2.py",
-		"/opt/binarybox/module/o",
-		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/Default.sublime-keymap",
-		"/home/sungyo/Unison/Application/GoodViewer/BO/thumbnailctrl.py"
+		"/opt/binarybox/module/o"
 	],
 	"find":
 	{
@@ -762,6 +786,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"hanibaram",
 			"text",
 			"QColor()",
 			"f.browser",
@@ -888,8 +913,7 @@
 			"form",
 			"Form",
 			"form",
-			"(.+)",
-			","
+			"(.+)"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1035,7 +1059,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1043,15 +1067,15 @@
 					"file": "src/hanibaram/hanibaram.py",
 					"settings":
 					{
-						"buffer_size": 4223,
+						"buffer_size": 4860,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4154,
-								4154
+								1239,
+								1239
 							]
 						],
 						"settings":
@@ -1061,25 +1085,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3675.0,
+						"translation.y": 726.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "hanibaram",
+					"file": "/home/sungyo/Unison/script/Board-parsing/IO.py",
 					"settings":
 					{
-						"buffer_size": 1923,
+						"buffer_size": 3482,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1016,
-								1016
+								792,
+								792
 							]
 						],
 						"settings":
@@ -1088,25 +1112,51 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 384.0,
+						"translation.y": 486.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/hanibaram/highlighter.py",
 					"settings":
 					{
-						"buffer_size": 3730,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2693,
-								2693
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "hanibaram",
+					"settings":
+					{
+						"buffer_size": 2246,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1134,
+								1134
 							]
 						],
 						"settings":
@@ -1115,13 +1165,68 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2045.0,
+						"translation.y": 537.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
+					"file": "src/hanibaram/note.py",
+					"settings":
+					{
+						"buffer_size": 668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/hanibaram/highlighter.py",
+					"settings":
+					{
+						"buffer_size": 2709,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"settings":
 					{
 						"buffer_size": 475,
@@ -1181,7 +1286,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 138.0
+		"height": 292.0
 	},
 	"replace":
 	{

@@ -22,6 +22,7 @@ import os
 import sys
 reload(sys)
 import signal
+sys.setdefaultencoding('utf-8')
 
 if os.path.isdir(os.path.join(".","src")) and os.path.isfile(os.path.join(".","setup.py")):
 	sys.path.append(os.path.realpath("src"))
@@ -34,9 +35,12 @@ except ImportError, err:
 
 try:
 	from hanibaram.hanibaram import NoteEditor
+	from hanibaram.note import Note
 except ImportError, err:
 	sys.stderr.write("Error: %s%s" % (str(err), os.linesep))
 	sys.exit(1)
+
+notes_dir = os.path.realpath("notes")
 
 class Main():
 	def __init__(self):
@@ -44,8 +48,11 @@ class Main():
 		self.editor = NoteEditor()
 		self.app.installEventFilter(self.editor)
 		self.editor.show()
-		self.editor.editor.textCursor().insertText('class \n')
-		self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> \n')
+		note = Note()
+		note.setFile(os.path.join(notes_dir, 'test2.note'))
+		self.editor.setNote(note)
+		# self.editor.editor.textCursor().insertText('class \n')
+		# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> \n')
 		# self.editor.editor.textCursor().insertHtml('<a href="https://google.com">google</a> \n')
 		# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> ')
 

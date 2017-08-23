@@ -1,0 +1,26 @@
+<html><head><meta name="qrichtext" content="1" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;">
+<p><span style=" font-size:20pt; text-decoration: underline; color:#0000ff;">class</span></p>
+<p>
+</p>
+<p>
+</p>
+<p><span style=" font-weight:600;">굵게</span></p>
+<p><span style=" font-style:italic;">기울임</span></p>
+<p><span style=" text-decoration: line-through;">취소선</span></p>
+<p><span style=" background-color:#ffff00;">강조</span></p>
+<p><span style=" text-decoration: underline;">밑줄</span></p>
+<p>
+</p>
+<p><span style=" font-size:9pt;">작게</span></p>
+<p>보통</p>
+<p><span style=" font-size:15pt;">크게</span></p>
+<p><span style=" font-size:20pt;">무지크게</span></p>
+<p>class</p>
+<p>
+</p>
+<p>보통, 무지 크게, 무지 무지 크게</p>
+<p>작동하는대로 class 작동 할까 의문.</p>
+<p>
+</p></body></html>

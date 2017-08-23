@@ -19,12 +19,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import re
 import sys
 reload(sys)
 import signal
-
-# from PyQt4 import QtCore
-# from PyQt4 import QtGui
+sys.setdefaultencoding('utf-8')
+# sys.setrecursionlimit(10000)
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -34,6 +34,14 @@ try:
 except ImportError, err:
  	sys.stderr.write("Error: %s%s" % (str(err), os.linesep))
  	sys.exit(1)
+
+try:
+	from note import Note
+	from reference import event_type, font_size
+
+except ImportError, err:
+	sys.stderr.write("Error: %s%s" % (str(err), os.linesep))
+	sys.exit(1)
 
 class NoteEditor(QDialog):
 	def __init__(self, parent=None):
@@ -50,11 +58,17 @@ class NoteEditor(QDialog):
 		self.setupMenu()
 		self.setLayout(layout)
 
-		self.highlight = Highlighter(self.editor.document())
-		self.highlight.addKeyword('class')
+		# self.highlight = Highlighter(self.editor.document())
+		# self.highlight.addKeyword('class')
+		# self.highlight.addKeyword('clas.cs')
+
 		self.resize(500, 500)
 
 		self.mouse_under_text = ''
+		self.is_editing_title = False
+		self.note = Note()
+		self.currentChartFormat = self.editor.currentCharFormat()
+		self.editor.textChanged.connect(self.typingTemplate)
 
 	def setupMenu(self):
 
@@ -69,10 +83,24 @@ class NoteEditor(QDialog):
 		editMenu.addAction("&Highlight", self.textHighlight, "Ctrl+H")
 		editMenu.addAction("&Strikethrough", self.textStrikethrough, "Ctrl+T")
 		editMenu.addAction("&Underline", self.textUnderline, "Ctrl+U")
-		# editMenu.addAction("&Bord...", self.textBold, "Ctrl+B")
+		editMenu.addSeparator()
+		editMenu.addAction("S&mall", self.textSizeSmall, "Ctrl+1")
+		editMenu.addAction("&Normal", self.textSizeNormal, "Ctrl+2")
+		editMenu.addAction("&Large", self.textSizeLarge, "Ctrl+3")
+		editMenu.addAction("&X-Large", self.textSizeXLarge, "Ctrl+4")
 
+	def setNote(self, note):
+		self.note = note
+		html = note.html
+		self.editor.setHtml(html)
+		# 타이틀이나 여는 시간등도 설정할 것.
+
+	## MenuBar Function ##
 	def saveFile(self):
-		print(self.editor.toHtml())
+		html = self.editor.toHtml()
+		self.note.setHtml(self.editor.toHtml())
+		self.note.saveFile()
+		# print(removeTag(html))
 
 	def textBold(self):
 		if self.editor.fontWeight() == QFont.Bold:
@@ -101,6 +129,86 @@ class NoteEditor(QDialog):
 		state = self.editor.fontUnderline()
 		self.editor.setFontUnderline(not state)
 
+	def textSizeSmall(self):
+		self.editor.setFontPointSize(font_size['Small'])
+	
+	def textSizeNormal(self):
+		self.editor.setFontPointSize(font_size['Normal'])
+	
+	def textSizeLarge(self):
+		self.editor.setFontPointSize(font_size['Large'])
+	
+	def textSizeXLarge(self):
+		self.editor.setFontPointSize(font_size['XLarge'])
+
+ 	# typingTemplate #
+
+	def typingTemplate(self, event_type = None):
+		def wiki_rule():
+			pass
+
+		def setTitle():
+			c.select(QTextCursor.LineUnderCursor)
+			selected_text = c.selectedText()
+			format = c.charFormat()
+			format.setFontPointSize(20)
+			format.setForeground(Qt.blue)
+			format.setFontUnderline(True)
+			c.setCharFormat(format)
+			if selected_text != selected_text.trimmed():
+				c.insertText(selected_text.trimmed())
+
+ 		c = self.editor.textCursor()
+		if c.hasSelection(): return True
+		
+		if c.blockNumber() == 0:
+			if self.is_editing_title == False:
+				print('self.is_editing_title: {}'.format(self.is_editing_title))
+				self.is_editing_title = True
+				setTitle()
+			return True
+
+		if c.blockNumber() != 0 and self.is_editing_title == True: # 제목편집 완료
+			print('setTitle')
+			self.is_editing_title = False
+			c.movePosition(c.Up)
+			setTitle()
+			pass
+
+		if event_type == 'title': return True
+
+ 		c_selected = self.editor.textCursor()
+		if self.editor.textCursor().atBlockStart():
+			self.editor.setCurrentCharFormat(self.currentChartFormat)
+		elif self.editor.textCursor().atBlockEnd():
+			self.editor.setCurrentCharFormat(self.currentChartFormat)
+		
+		else:
+			current_format = c.charFormat()
+			c.movePosition(c.Right)
+			right_format = c.charFormat()
+			 
+			#weight (bold)
+			if current_format.fontWeight() != right_format.fontWeight():
+				current_format.setFontWeight(QFont.Normal)
+
+			# italac
+			if current_format.fontItalic() != right_format.fontItalic():
+				current_format.setFontItalic(False)
+
+			# strikethrough
+			if current_format.fontStrikeOut() != right_format.fontStrikeOut():
+				current_format.setFontStrikeOut(False)
+
+			# highlight
+			if current_format.background().color().name() != right_format.background().color().name():	
+				color = QColor()
+				color.setNamedColor('#ffffff')
+				current_format.setBackground(QBrush(color))
+	
+			self.editor.setCurrentCharFormat(current_format)
+
+	## Event Set ##
 
 	def eventFilter(self, source, event):
 		if event.type() == QEvent.MouseMove:
@@ -115,7 +223,7 @@ class NoteEditor(QDialog):
 					if self.mouse_under_text != text:
 						sentence = 'selectedText: %s' %text
 						sentence = sentence.encode('utf-8')
-						print('%s' %(sentence))
+						# print('%s' %(sentence))
 						self.mouse_under_text = text
 						if virtual_cursor.charFormat().isAnchor():
 							print(virtual_cursor.charFormat().anchorHref())
@@ -127,7 +235,15 @@ class NoteEditor(QDialog):
 				else:
 					self.mouse_under_text =''
 					pass # do other stuff
-		if event.type() == QEvent.KeyPress:
-			print(event.key())
-		return self.editor.eventFilter(self, event)
+		
+		# if event.type() not in [77, 1, 12]: print(event_type[event.type()])
 
+		if event.type() == QEvent.KeyRelease:
+			if event.key() in [Qt.Key_Down, Qt.Key_PageDown]:
+				self.typingTemplate(event_type = 'title')
+
+		if event.type() == QEvent.KeyPress:
+			if event.key() == Qt.Key_Return:
+				self.editor.setCurrentCharFormat(self.currentChartFormat)
+
+		return self.editor.eventFilter(self, event)
