@@ -528,18 +528,26 @@
 			}
 		},
 		{
-			"file": "hanibaram",
-			"settings":
-			{
-				"buffer_size": 2123,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "src/hanibaram/note.py",
 			"settings":
 			{
 				"buffer_size": 1676,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/hanibaram/logger.py",
+			"settings":
+			{
+				"buffer_size": 1119,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/binarybox/module/python/IO.py",
+			"settings":
+			{
+				"buffer_size": 6237,
 				"line_ending": "Unix"
 			}
 		},
@@ -616,8 +624,10 @@
 	},
 	"file_history":
 	[
-		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/old/highlighter.py",
+		"/home/sungyo/Unison/Application/Hanibaram/hanibaram",
+		"/opt/binarybox/module/python-custom/IO.py",
 		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/highlighter.py",
+		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/old/highlighter.py",
 		"/home/sungyo/Unison/Application/Hanibaram/notes/test2.note",
 		"/home/sungyo/Unison/Application/Hanibaram/notes/test.note",
 		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/note.py",
@@ -724,7 +734,6 @@
 		"/opt/binarybox/module/python/IO.py",
 		"/home/sungyo/바탕화면/1,2,3,4.txt",
 		"/opt/binarybox/applications/dictionary/IO.py",
-		"/opt/binarybox/module/python-custom/IO.py",
 		"/home/sungyo/바탕화면/test.py",
 		"/opt/binarybox/module/python-custom/OS.py",
 		"/opt/binarybox/module/python-custom/WEB.py",
@@ -742,8 +751,7 @@
 		"/usr/local/lib/python3.4/dist-packages/telepot/api.py",
 		"/usr/lib/python3.4/http/__init__.py",
 		"/usr/local/lib/python3.4/dist-packages/telepot/__init__.py",
-		"/usr/lib/python3.4/http/client.py",
-		"/run/user/1000/gvfs/sftp:host=hp380/home/sungyo/Zentyal/mnt/sda/sungyo/문서/backup/Good Reader Cloud/팁암기/44.At-15-16.caf"
+		"/usr/lib/python3.4/http/client.py"
 	],
 	"find":
 	{
@@ -762,6 +770,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"s",
+			"set",
+			"logr.",
+			"import",
+			"test",
+			"hanibaram",
+			"Highlighter",
+			"print",
 			"content",
 			"secceed style",
 			"typingTemplate",
@@ -881,15 +897,7 @@
 			"QWidget.setCursor (self, ",
 			"lineedit",
 			"_fromUtf8",
-			"_fromUtf",
-			"webview",
-			"webView",
-			"page",
-			"page()",
-			"webView",
-			"verticalLayout_2",
-			"QtWebKit",
-			"webview"
+			"_fromUtf"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1050,8 +1058,8 @@
 						"selection":
 						[
 							[
-								3808,
-								3808
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1061,40 +1069,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3657.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "hanibaram",
-					"settings":
-					{
-						"buffer_size": 2123,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1949,
-								1949
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 897.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "src/hanibaram/note.py",
 					"settings":
 					{
@@ -1105,8 +1086,8 @@
 						"selection":
 						[
 							[
-								969,
-								969
+								1676,
+								1676
 							]
 						],
 						"settings":
@@ -1116,17 +1097,46 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 51.0,
+						"translation.y": 529.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/hanibaram/logger.py",
+					"settings":
+					{
+						"buffer_size": 1119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1072,
+								1072
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 368.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "src/hanibaram/reference.py",
+					"file": "/opt/binarybox/module/python/IO.py",
 					"settings":
 					{
-						"buffer_size": 4224,
+						"buffer_size": 6237,
 						"regions":
 						{
 						},
@@ -1144,6 +1154,33 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/hanibaram/reference.py",
+					"settings":
+					{
+						"buffer_size": 4224,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								802,
+								802
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 759.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
