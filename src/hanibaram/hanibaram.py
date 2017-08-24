@@ -68,31 +68,35 @@ class NoteEditor(QDialog):
 		self.is_editing_title = False
 		self.note = Note()
 		self.currentChartFormat = self.editor.currentCharFormat()
-		self.editor.textChanged.connect(self.typingTemplate)
+		self.editor.textChanged.connect(self.typingHandler)
 
 	def setupMenu(self):
 
 		fileMenu = QMenu("&File", self)
 		self.menuBar.addMenu(fileMenu)
-		fileMenu.addAction("&Save...", self.saveFile, "Ctrl+S")
+		fileMenu.addAction("&Save...", 		self.saveFile, 		"Ctrl+S")
 
-		editMenu = QMenu("&Edit", self)
+		editMenu = QMenu("&Edit", 	self)
 		self.menuBar.addMenu(editMenu)
-		editMenu.addAction("&Bord", self.textBold, "Ctrl+B")
-		editMenu.addAction("&Italic", self.textItalic, "Ctrl+I")
-		editMenu.addAction("&Highlight", self.textHighlight, "Ctrl+H")
+		editMenu.addAction("&Bord", 		self.textBold, 		"Ctrl+B")
+		editMenu.addAction("&Italic", 		self.textItalic, 		"Ctrl+I")
+		editMenu.addAction("&Highlight", self.textHighlight, 	"Ctrl+H")
 		editMenu.addAction("&Strikethrough", self.textStrikethrough, "Ctrl+T")
-		editMenu.addAction("&Underline", self.textUnderline, "Ctrl+U")
+		editMenu.addAction("&Underline", self.textUnderline, 	"Ctrl+U")
 		editMenu.addSeparator()
-		editMenu.addAction("S&mall", self.textSizeSmall, "Ctrl+1")
-		editMenu.addAction("&Normal", self.textSizeNormal, "Ctrl+2")
-		editMenu.addAction("&Large", self.textSizeLarge, "Ctrl+3")
-		editMenu.addAction("&X-Large", self.textSizeXLarge, "Ctrl+4")
+		editMenu.addAction("S&mall", 		self.textSizeSmall, 	"Ctrl+1")
+		editMenu.addAction("&Normal", 	self.textSizeNormal, "Ctrl+2")
+		editMenu.addAction("&Large", 		self.textSizeLarge, 	"Ctrl+3")
+		editMenu.addAction("&X-Large", 	self.textSizeXLarge, "Ctrl+4")
+		editMenu.addSeparator()
+		editMenu.addAction("Indent", 		self.textIndent, 		"Alt+Right")
+		editMenu.addAction("Dedent", 		self.textDedent, 	"Alt+Left")
 
 	def setNote(self, note):
 		self.note = note
 		html = note.html
 		self.editor.setHtml(html)
+		c = self.editor.textCursor()
 		# 타이틀이나 여는 시간등도 설정할 것.
 
 	## MenuBar Function ##
@@ -100,7 +104,6 @@ class NoteEditor(QDialog):
 		html = self.editor.toHtml()
 		self.note.setHtml(self.editor.toHtml())
 		self.note.saveFile()
-		# print(removeTag(html))
 
 	def textBold(self):
 		if self.editor.fontWeight() == QFont.Bold:
@@ -129,25 +132,78 @@ class NoteEditor(QDialog):
 		state = self.editor.fontUnderline()
 		self.editor.setFontUnderline(not state)
 
-	def textSizeSmall(self):
-		self.editor.setFontPointSize(font_size['Small'])
-	
-	def textSizeNormal(self):
-		self.editor.setFontPointSize(font_size['Normal'])
-	
-	def textSizeLarge(self):
-		self.editor.setFontPointSize(font_size['Large'])
-	
-	def textSizeXLarge(self):
-		self.editor.setFontPointSize(font_size['XLarge'])
+	def textSizeSmall(self): 		self.editor.setFontPointSize(font_size['Small'])	
+	def textSizeNormal(self): 	self.editor.setFontPointSize(font_size['Normal'])
+	def textSizeLarge(self): 		self.editor.setFontPointSize(font_size['Large'])
+	def textSizeXLarge(self): 	self.editor.setFontPointSize(font_size['XLarge'])
 
- 	# typingTemplate #
+	def textIndent(self):
+		def indentLine(c):
+			textList = c.currentList()
 
-	def typingTemplate(self, event_type = None):
+			if type(textList) == QTextList:
+				format = textList.format()
+				indent = format.indent()
+				style = format.style()
+				print('style: {}, indent: {}'.format(style, indent))
+
+				format.setIndent(indent + 1)
+				format.setStyle(-(((indent) % 3) +1))
+				textList.setFormat(format)
+				# print('indent:{}, style:{}'.format(format.indent(), format.style()))
+				# c.createList(format)
+			else: c.createList(-1)
+
+		c = self.editor.textCursor()
+
+		if c.hasSelection():
+			temp = c.blockNumber()
+			c.setPosition(c.anchor())
+			diff = c.blockNumber() - temp
+			direction = QTextCursor.Up if diff > 0 else QTextCursor.Down
+			for n in range(abs(diff) + 1):
+				indentLine(c)
+				c.movePosition(direction)
+		else: indentLine(c)
+	
+	def textDedent(self):
+		def dedentLine(c):
+			textList = c.currentList()
+			if type(textList) == QTextList:
+				format = textList.format()
+				indent = format.indent()
+				style = format.style()
+
+				format.setIndent(indent -1)
+				print('style: {}, indent: {}'.format(style, indent))
+				format.setStyle(-(((indent-2) % 3) +1))
+				textList.setFormat(format)
+				if indent <= 1: 
+					format.setIndent(0)
+					textList.setFormat(format)
+					textList.remove(c.block())
+
+		c = self.editor.textCursor()
+		
+		if c.hasSelection():
+			temp = c.blockNumber()
+			c.setPosition(c.anchor())
+			diff = c.blockNumber() - temp
+			direction = QTextCursor.Up if diff > 0 else QTextCursor.Down
+			for n in range(abs(diff) + 1):
+				dedentLine(c)
+				c.movePosition(direction)
+		else:
+			dedentLine(c)
+
+ 	# typingHandler #
+
+	def typingHandler(self, event_type = None):
 		def wiki_rule():
 			pass
 
 		def setTitle():
+			c.movePosition(c.Start)
 			c.select(QTextCursor.LineUnderCursor)
 			selected_text = c.selectedText()
 			format = c.charFormat()
@@ -163,18 +219,13 @@ class NoteEditor(QDialog):
 		
 		if c.blockNumber() == 0:
 			if self.is_editing_title == False:
-				print('self.is_editing_title: {}'.format(self.is_editing_title))
 				self.is_editing_title = True
 				setTitle()
 			return True
 
 		if c.blockNumber() != 0 and self.is_editing_title == True: # 제목편집 완료
-			print('setTitle')
 			self.is_editing_title = False
-			c.movePosition(c.Up)
 			setTitle()
-			pass
-
 		if event_type == 'title': return True
 
  		c_selected = self.editor.textCursor()
@@ -240,7 +291,7 @@ class NoteEditor(QDialog):
 
 		if event.type() == QEvent.KeyRelease:
 			if event.key() in [Qt.Key_Down, Qt.Key_PageDown]:
-				self.typingTemplate(event_type = 'title')
+				self.typingHandler(event_type = 'title')
 
 		if event.type() == QEvent.KeyPress:
 			if event.key() == Qt.Key_Return:

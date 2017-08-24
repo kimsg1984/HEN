@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"setFont",
+				"setFontPointSize"
+			],
+			[
+				"typ",
+				"typingTemplate"
+			],
+			[
+				"note",
+				"notes_dir"
+			],
+			[
 				"St",
 				"textStrikethrough"
 			],
@@ -70,10 +82,6 @@
 			[
 				"tabl",
 				"table_script	statement"
-			],
-			[
-				"typ",
-				"types_of_book	statement"
 			],
 			[
 				"p",
@@ -506,14 +514,6 @@
 			[
 				"stor",
 				"store_code"
-			],
-			[
-				"to",
-				"totom_command_key"
-			],
-			[
-				"current_",
-				"current_window_id"
 			]
 		]
 	},
@@ -523,23 +523,7 @@
 			"file": "src/hanibaram/hanibaram.py",
 			"settings":
 			{
-				"buffer_size": 4860,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/sungyo/Unison/script/Board-parsing/IO.py",
-			"settings":
-			{
-				"buffer_size": 3482,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
+				"buffer_size": 9301,
 				"line_ending": "Unix"
 			}
 		},
@@ -547,7 +531,7 @@
 			"file": "hanibaram",
 			"settings":
 			{
-				"buffer_size": 2246,
+				"buffer_size": 2123,
 				"line_ending": "Unix"
 			}
 		},
@@ -555,23 +539,15 @@
 			"file": "src/hanibaram/note.py",
 			"settings":
 			{
-				"buffer_size": 668,
+				"buffer_size": 1676,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/hanibaram/highlighter.py",
+			"file": "src/hanibaram/reference.py",
 			"settings":
 			{
-				"buffer_size": 2709,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\\n\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\\np, li { white-space: pre-wrap; }\\n</style></head><body style=\" font-family:\\'Courier\\'; font-size:10pt; font-weight:400; font-style:normal;\">\\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;\">class</p></body></html>'",
-			"settings":
-			{
-				"buffer_size": 475,
+				"buffer_size": 4224,
 				"line_ending": "Unix"
 			}
 		}
@@ -640,6 +616,18 @@
 	},
 	"file_history":
 	[
+		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/old/highlighter.py",
+		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/highlighter.py",
+		"/home/sungyo/Unison/Application/Hanibaram/notes/test2.note",
+		"/home/sungyo/Unison/Application/Hanibaram/notes/test.note",
+		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/note.py",
+		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/reference.py",
+		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/event_type.py",
+		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap04/alert.pyw",
+		"/home/sungyo/Unison/Application/Hanibaram/notes/test3.note",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/Python/Python.sublime-build",
+		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/untitled.sublime-snippet",
+		"/home/sungyo/Unison/script/Board-parsing/IO.py",
 		"/home/sungyo/Unison/Application/Hanibaram/src/hanibaram/__init__.py",
 		"/home/sungyo/Unison/Application/Hanibaram/src/notes/test.note",
 		"/opt/binarybox/applications/telepy/.gitignore",
@@ -652,7 +640,6 @@
 		"/home/sungyo/Unison/Application/WestWind/setup.py",
 		"/home/sungyo/history.txt",
 		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/python_printdir.sublime-snippet",
-		"/backup/sungyo/Unison-real/script/sublime-text-2/Packages/User/untitled.sublime-snippet",
 		"/home/sungyo/Unison/Application/WestWind/westwind.py",
 		"/home/sungyo/Unison/script/python/PyQt/pyhtmleditor/pyhtmleditor",
 		"/home/sungyo/Unison/Application/WestWind/COPYING",
@@ -710,7 +697,6 @@
 		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap13/printing.pyw",
 		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap13/resources.qrc",
 		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap04/calculate.pyw",
-		"/home/sungyo/Unison/script/python/PyQt/PyQtBook/chap04/alert.pyw",
 		"/opt/binarybox/applications/dictionary/dict.py",
 		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/ode.txt",
 		"/home/sungyo/Unison/논문준비/조응현상과인지문법/원문조사/outos_neuter.txt",
@@ -757,17 +743,7 @@
 		"/usr/lib/python3.4/http/__init__.py",
 		"/usr/local/lib/python3.4/dist-packages/telepot/__init__.py",
 		"/usr/lib/python3.4/http/client.py",
-		"/run/user/1000/gvfs/sftp:host=hp380/home/sungyo/Zentyal/mnt/sda/sungyo/문서/backup/Good Reader Cloud/팁암기/44.At-15-16.caf",
-		"/opt/binarybox/applications/telepy/telepy.py",
-		"/opt/binarybox/applications/telepy/telemessage",
-		"/opt/binarybox/applications/telepy/telepy.ini",
-		"/opt/binarybox/applications/telepy/teledemon",
-		"/usr/local/lib/python3.4/dist-packages/telebot/__init__.py",
-		"/usr/local/lib/python2.7/dist-packages/telepot/__init__.py",
-		"/home/sungyo/test2.py",
-		"/home/sungyo/바탕화면/exif2.sh",
-		"/home/sungyo/바탕화면/jackpum_gel2.py",
-		"/opt/binarybox/module/o"
+		"/run/user/1000/gvfs/sftp:host=hp380/home/sungyo/Zentyal/mnt/sda/sungyo/문서/backup/Good Reader Cloud/팁암기/44.At-15-16.caf"
 	],
 	"find":
 	{
@@ -786,6 +762,78 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"content",
+			"secceed style",
+			"typingTemplate",
+			"QtGui",
+			"cursor",
+			"Cursor",
+			"cursor",
+			"Cursor",
+			"cursor",
+			"Cursor",
+			"cursor",
+			"cursor.",
+			"Cursor.",
+			"cursor.",
+			"Cursor.",
+			"cursor.",
+			"cursor",
+			"Cursor",
+			"cursor",
+			"Cursor",
+			"cursor",
+			"moveposition",
+			"print",
+			"is_editing_title",
+			"parent()",
+			".parent()",
+			"parent().",
+			"parent().parent()",
+			".parent()",
+			"expression",
+			"commentEndExpression",
+			"commentStartExpression\n",
+			"Small",
+			" ",
+			"'",
+			",",
+			"center_format",
+			"left_format",
+			"request",
+			",",
+			"\\s",
+			"(\\d+) (.+)",
+			"(.+?)(\\d+)",
+			"(\\d+)(.+)",
+			"(.+)(\\d+)(.+)",
+			"filt",
+			"filter",
+			".0",
+			"editor",
+			"fmt",
+			"small",
+			"''",
+			"gorund",
+			"fontStrikeOut()",
+			"c.",
+			"fontItalic()",
+			"Weight",
+			"con",
+			"signal",
+			"set",
+			"setectionStart",
+			"margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;",
+			"p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;\">",
+			"<p",
+			"margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;",
+			"test",
+			"saveFile",
+			"qstring",
+			"print",
+			"pdir",
+			"saveFile",
+			"setHtml",
 			"hanibaram",
 			"text",
 			"QColor()",
@@ -841,79 +889,7 @@
 			"webView",
 			"verticalLayout_2",
 			"QtWebKit",
-			"webview",
-			"webkit",
-			"edit",
-			"browser",
-			"brow",
-			"ProcessRenameLinkUpdate",
-			"notes ",
-			"notes",
-			"update",
-			"watcher\\.",
-			" watcher ",
-			"watcher",
-			"UpdateNoteTitle",
-			"Renaming note from",
-			"create",
-			"dohighlight",
-			"highligh",
-			"TitleTrie",
-			"Matching Note title",
-			" Matching Note title",
-			" Matching Note title ",
-			"gtk",
-			"InvalidateText",
-			" title ",
-			"title",
-			"addin_mgr",
-			"^\\./",
-			"MinValue",
-			"ReadFile",
-			"Instance",
-			" Instance ",
-			"Instance",
-			"NoteArchiver",
-			"NoteArchi",
-			"CreateExistingNote",
-			" Load\\(",
-			" Load \\(",
-			" Load (",
-			" Load ",
-			"Note",
-			"links_note",
-			"logger",
-			"\\./",
-			"select",
-			"virtual_cursor",
-			"QtCore.",
-			"cursor",
-			"cursor\n",
-			"eventFilter",
-			"mouseMoveEvent",
-			"mouseReleaseEvent",
-			"mouser",
-			"modify",
-			"QtWebKit",
-			"webView",
-			"execCommand",
-			"url",
-			"brow",
-			"textedit",
-			"tabWidget",
-			"highlighter",
-			"bro",
-			"brow",
-			"textedit",
-			"]",
-			"font",
-			"ping",
-			"]",
-			"layout",
-			"form",
-			"Form",
-			"form",
-			"(.+)"
+			"webview"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -921,6 +897,17 @@
 		"regex": true,
 		"replace_history":
 		[
+			"typingHandler",
+			"",
+			"\n",
+			"current_format",
+			",\ncurrent_format",
+			",\n",
+			"",
+			"\\1 : '\\2',",
+			"\\2 \\1",
+			"\\1",
+			"\\2 \\1",
 			"QTextEdit",
 			"",
 			"print ('\\1: %s' %f.\\1)",
@@ -1037,18 +1024,7 @@
 			"(\\1)",
 			"\n",
 			"행28:\\1)",
-			"",
-			"행27:\\1)",
-			"삼하",
-			" 삼하3:\\1)",
-			" ",
-			"dir_\\1",
-			"base_dir",
-			"시15:\\1)",
-			" ",
-			"@@logserver.int:1025",
-			":1024",
-			"\\1)"
+			""
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1059,7 +1035,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1067,15 +1043,15 @@
 					"file": "src/hanibaram/hanibaram.py",
 					"settings":
 					{
-						"buffer_size": 4860,
+						"buffer_size": 9301,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1239,
-								1239
+								3808,
+								3808
 							]
 						],
 						"settings":
@@ -1085,25 +1061,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 726.0,
+						"translation.y": 3657.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/home/sungyo/Unison/script/Board-parsing/IO.py",
+					"file": "hanibaram",
 					"settings":
 					{
-						"buffer_size": 3482,
+						"buffer_size": 2123,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								792,
-								792
+								1949,
+								1949
 							]
 						],
 						"settings":
@@ -1112,78 +1088,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 486.0,
+						"translation.y": 897.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "hanibaram",
-					"settings":
-					{
-						"buffer_size": 2246,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1134,
-								1134
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 537.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "src/hanibaram/note.py",
 					"settings":
 					{
-						"buffer_size": 668,
+						"buffer_size": 1676,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								129,
-								129
+								969,
+								969
 							]
 						],
 						"settings":
@@ -1193,17 +1116,17 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 51.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/hanibaram/highlighter.py",
+					"buffer": 3,
+					"file": "src/hanibaram/reference.py",
 					"settings":
 					{
-						"buffer_size": 2709,
+						"buffer_size": 4224,
 						"regions":
 						{
 						},
@@ -1218,31 +1141,6 @@
 						{
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"settings":
-					{
-						"buffer_size": 475,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								475,
-								475
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1286,7 +1184,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 292.0
+		"height": 193.0
 	},
 	"replace":
 	{

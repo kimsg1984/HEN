@@ -51,10 +51,6 @@ class Main():
 		note = Note()
 		note.setFile(os.path.join(notes_dir, 'test2.note'))
 		self.editor.setNote(note)
-		# self.editor.editor.textCursor().insertText('class \n')
-		# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> \n')
-		# self.editor.editor.textCursor().insertHtml('<a href="https://google.com">google</a> \n')
-		# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> ')
 
 	def exec_(self):
 		try:
@@ -67,3 +63,8 @@ class Main():
 if __name__ == '__main__':
 	m = Main()
 	m.exec_()
+
+# self.editor.editor.textCursor().insertText('class \n')
+# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> \n')
+# self.editor.editor.textCursor().insertHtml('<a href="https://google.com">google</a> \n')
+# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> ')

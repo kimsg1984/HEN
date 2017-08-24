@@ -27,7 +27,7 @@ class Note(object):
             return html
         self.filename = filename
         html = open(filename).read()
-        html = addTag(html)
+        # html = addTag(html)
         self.html = unicode(html) # 불러올 때 unicode로인코딩
         self.title = ''
 
@@ -46,7 +46,7 @@ class Note(object):
         save_file = open(self.filename, 'w')
         html = '%s' %self.html
         html.encode('utf-8')
-        content = removeTag(html)
+        # html = removeTag(html)
 
-        save_file.write('%s' %content)
+        save_file.write('%s' %html)
         save_file.close()
