@@ -7,8 +7,8 @@
 
 import sys
 import re
-# reload(sys)
-# sys.setdefaultencoding('utf-8')
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 class Note(object):
     """

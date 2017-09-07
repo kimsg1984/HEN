@@ -21,30 +21,55 @@
 import os
 import sys
 reload(sys)
+import logging
+import logging.config 
 import signal
 sys.setdefaultencoding('utf-8')
+
+# 인자값을 먼저 받고, 로그 설정을 한 뒤에 임폴트를 하자
+
+# print(os.path.dirname(os.path.abspath(__file__)))
+# exit()
 
 if os.path.isdir(os.path.join(".","src")) and os.path.isfile(os.path.join(".","setup.py")):
 	sys.path.append(os.path.realpath("src"))
 
-try:
-	from PyQt4.QtGui import QApplication
-except ImportError, err:
-	sys.stderr.write("Error: %s%s" % (str(err), os.linesep))
-	sys.exit(1)
-
-try:
-	from hanibaram.hanibaram import NoteEditor
-	from hanibaram.note import Note
-except ImportError, err:
-	sys.stderr.write("Error: %s%s" % (str(err), os.linesep))
-	sys.exit(1)
-
-notes_dir = os.path.realpath("notes")
+# notes_dir = os.path.realpath("notes")
+notes_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'notes')
 
 class Main():
-	def __init__(self):
-		self.app = QApplication(sys.argv)
+	def __init__(self, argv):		
+		## Parser Setting ##
+		argv.append('-d')
+		usage = u"Usage: %prog [options]"
+		parser = __import__('optparse').OptionParser(usage)
+	
+		## Parser Option ##	
+		parser.add_option('-d', '--debug', dest='debug', action='store_true', help=u'debugging mode')
+		
+		## command logic  ##
+		(opt, argv) = parser.parse_args(argv)
+		if opt.debug:
+			log_level = logging.DEBUG
+		else:
+			log_level = logging.INFO
+
+		logging.basicConfig(format = '%(asctime)s [%(filename)s:%(lineno)s|%(levelname)s]\t %(message)s', level = log_level)
+		log = logging.getLogger('root')
+
+		try:
+			from PyQt4.QtGui import QApplication
+		except ImportError, err:
+			log.warning("Error: %s%s" % (str(err), os.linesep))
+			sys.exit(1)
+		try:
+			from hanibaram.hanibaram import NoteEditor
+			from hanibaram.note import Note
+		except ImportError, err:
+			log.warning("Error: %s%s" % (str(err), os.linesep))
+			sys.exit(1)
+
+		self.app = QApplication(argv)
 		self.editor = NoteEditor()
 		self.app.installEventFilter(self.editor)
 		self.editor.show()
@@ -61,10 +86,5 @@ class Main():
 	 		pass
 
 if __name__ == '__main__':
-	m = Main()
+	m = Main(sys.argv)
 	m.exec_()
-
-# self.editor.editor.textCursor().insertText('class \n')
-# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> \n')
-# self.editor.editor.textCursor().insertHtml('<a href="https://google.com">google</a> \n')
-# self.editor.editor.textCursor().insertText('<a href="https://google.com">google</a> ')

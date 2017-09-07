@@ -22,9 +22,11 @@ import os
 import re
 import sys
 reload(sys)
-import signal
+import logging
 sys.setdefaultencoding('utf-8')
 # sys.setrecursionlimit(10000)
+
+log = logging.getLogger(__name__)
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -32,7 +34,7 @@ from PyQt4.QtCore import *
 try:
 	 from highlighter import Highlighter
 except ImportError, err:
- 	sys.stderr.write("Error: %s%s" % (str(err), os.linesep))
+ 	log.warning("Error: %s%s" % (str(err), os.linesep))
  	sys.exit(1)
 
 try:
@@ -40,7 +42,7 @@ try:
 	from reference import event_type, font_size
 
 except ImportError, err:
-	sys.stderr.write("Error: %s%s" % (str(err), os.linesep))
+	log.warning("Error: %s%s" % (str(err), os.linesep))
 	sys.exit(1)
 
 class NoteEditor(QDialog):
@@ -74,23 +76,30 @@ class NoteEditor(QDialog):
 
 		fileMenu = QMenu("&File", self)
 		self.menuBar.addMenu(fileMenu)
-		fileMenu.addAction("&Save...", 		self.saveFile, 		"Ctrl+S")
+		fileMenu.addAction("&Save...", 		self.saveFile, 			"Ctrl+S")
 
 		editMenu = QMenu("&Edit", 	self)
+		styleMenu = QMenu("S&tyle", self)
+		sizeMenu = QMenu("&Size", self)
+		indentMenu = QMenu("&Indent", self)
 		self.menuBar.addMenu(editMenu)
-		editMenu.addAction("&Bord", 		self.textBold, 		"Ctrl+B")
+		# self.menuBar.addMenu(styleMenu)
+		# self.menuBar.addMenu(sizeMenu)
+		# self.menuBar.addMenu(indentMenu)
+		editMenu.addAction("&Bord", 		self.textBold, 			"Ctrl+B")
 		editMenu.addAction("&Italic", 		self.textItalic, 		"Ctrl+I")
-		editMenu.addAction("&Highlight", self.textHighlight, 	"Ctrl+H")
+		editMenu.addAction("&Highlight", 	self.textHighlight, 	"Ctrl+H")
 		editMenu.addAction("&Strikethrough", self.textStrikethrough, "Ctrl+T")
-		editMenu.addAction("&Underline", self.textUnderline, 	"Ctrl+U")
+		editMenu.addAction("&Underline", 	self.textUnderline, 	"Ctrl+U")
 		editMenu.addSeparator()
 		editMenu.addAction("S&mall", 		self.textSizeSmall, 	"Ctrl+1")
-		editMenu.addAction("&Normal", 	self.textSizeNormal, "Ctrl+2")
+		editMenu.addAction("&Normal", 		self.textSizeNormal, 	"Ctrl+2")
 		editMenu.addAction("&Large", 		self.textSizeLarge, 	"Ctrl+3")
-		editMenu.addAction("&X-Large", 	self.textSizeXLarge, "Ctrl+4")
+		editMenu.addAction("&X-Large", 		self.textSizeXLarge, 	"Ctrl+4")
 		editMenu.addSeparator()
 		editMenu.addAction("Indent", 		self.textIndent, 		"Alt+Right")
-		editMenu.addAction("Dedent", 		self.textDedent, 	"Alt+Left")
+		editMenu.addAction("Dedent", 		self.textDedent, 		"Alt+Left")
+		editMenu.addAction("Number/Bullet", 	self.textNumOrBullet, "Alt+N")
 
 	def setNote(self, note):
 		self.note = note
@@ -100,22 +109,28 @@ class NoteEditor(QDialog):
 		# 타이틀이나 여는 시간등도 설정할 것.
 
 	## MenuBar Function ##
+	# File Menu #
 	def saveFile(self):
 		html = self.editor.toHtml()
 		self.note.setHtml(self.editor.toHtml())
 		self.note.saveFile()
 
+	# Edit Menu #
 	def textBold(self):
+		if self.editor.textCursor().blockNumber() == 0: return
+
 		if self.editor.fontWeight() == QFont.Bold:
 			self.editor.setFontWeight(QFont.Normal)
 		else:
 			self.editor.setFontWeight(QFont.Bold)
 
 	def textItalic(self):
+		if self.editor.textCursor().blockNumber() == 0: return
 		state = self.editor.fontItalic()
 		self.editor.setFontItalic(not state)
 
 	def textHighlight(self):
+		if self.editor.textCursor().blockNumber() == 0: return
 		color = self.editor.textBackgroundColor()
 		if color.name() == '#ffff00':
 			color.setNamedColor('#ffffff')
@@ -124,34 +139,42 @@ class NoteEditor(QDialog):
 		self.editor.setTextBackgroundColor(color)
 
 	def textStrikethrough(self):
+		if self.editor.textCursor().blockNumber() == 0: return
 		fmt = self.editor.currentCharFormat()
 		fmt.setFontStrikeOut(not fmt.fontStrikeOut())
 		self.editor.setCurrentCharFormat(fmt)
 
 	def textUnderline(self):
+		if self.editor.textCursor().blockNumber() == 0: return
 		state = self.editor.fontUnderline()
 		self.editor.setFontUnderline(not state)
 
-	def textSizeSmall(self): 		self.editor.setFontPointSize(font_size['Small'])	
-	def textSizeNormal(self): 	self.editor.setFontPointSize(font_size['Normal'])
-	def textSizeLarge(self): 		self.editor.setFontPointSize(font_size['Large'])
-	def textSizeXLarge(self): 	self.editor.setFontPointSize(font_size['XLarge'])
+	def textSizeSmall(self):
+		if self.editor.textCursor().blockNumber() == 0: return
+		self.editor.setFontPointSize(font_size['Small'])
+	def textSizeNormal(self):
+		if self.editor.textCursor().blockNumber() == 0: return
+		self.editor.setFontPointSize(font_size['Normal'])
+	def textSizeLarge(self):
+		if self.editor.textCursor().blockNumber() == 0: return
+		self.editor.setFontPointSize(font_size['Large'])
+	def textSizeXLarge(self):
+		if self.editor.textCursor().blockNumber() == 0: return
+		self.editor.setFontPointSize(font_size['XLarge'])
 
 	def textIndent(self):
-		def indentLine(c):
+		if self.editor.textCursor().blockNumber() == 0: return
+		def indentLine():
 			textList = c.currentList()
 
 			if type(textList) == QTextList:
 				format = textList.format()
 				indent = format.indent()
 				style = format.style()
-				print('style: {}, indent: {}'.format(style, indent))
-
 				format.setIndent(indent + 1)
 				format.setStyle(-(((indent) % 3) +1))
 				textList.setFormat(format)
-				# print('indent:{}, style:{}'.format(format.indent(), format.style()))
-				# c.createList(format)
+				log.debug('style: {}, indent: {}'.format(style, indent))
 			else: c.createList(-1)
 
 		c = self.editor.textCursor()
@@ -162,12 +185,13 @@ class NoteEditor(QDialog):
 			diff = c.blockNumber() - temp
 			direction = QTextCursor.Up if diff > 0 else QTextCursor.Down
 			for n in range(abs(diff) + 1):
-				indentLine(c)
+				indentLine()
 				c.movePosition(direction)
-		else: indentLine(c)
-	
+		else: indentLine()
+
 	def textDedent(self):
-		def dedentLine(c):
+		if self.editor.textCursor().blockNumber() == 0: return
+		def dedentLine():
 			textList = c.currentList()
 			if type(textList) == QTextList:
 				format = textList.format()
@@ -175,26 +199,62 @@ class NoteEditor(QDialog):
 				style = format.style()
 
 				format.setIndent(indent -1)
-				print('style: {}, indent: {}'.format(style, indent))
+				log.debug('style: {}, indent: {}'.format(style, indent))
 				format.setStyle(-(((indent-2) % 3) +1))
 				textList.setFormat(format)
-				if indent <= 1: 
+				if indent <= 1:
 					format.setIndent(0)
 					textList.setFormat(format)
 					textList.remove(c.block())
 
 		c = self.editor.textCursor()
-		
+
 		if c.hasSelection():
 			temp = c.blockNumber()
 			c.setPosition(c.anchor())
 			diff = c.blockNumber() - temp
 			direction = QTextCursor.Up if diff > 0 else QTextCursor.Down
 			for n in range(abs(diff) + 1):
-				dedentLine(c)
+				dedentLine()
 				c.movePosition(direction)
 		else:
-			dedentLine(c)
+			dedentLine()
+
+	def textNumOrBullet(self):
+		if self.editor.textCursor().blockNumber() == 0: return
+		def setBullet():
+			textList = c.currentList()
+
+		def bulletOrNumber():
+			if type(textList) == QTextList:
+				format = textList.format()
+				indent = format.indent()
+				style = format.style()
+				if -3 <= style <= -1:
+					log.debug('style: {}, indent: {}, Bullet to Number'.format(style, indent))
+					return True # False mean Bullet
+				else:
+					log.debug('style: {}, indent: {}, Number to Bullet'.format(style, indent))
+					return False
+
+
+				# format.setIndent(indent + 1)
+				# format.setStyle(-(((indent) % 3) +1))
+				# textList.setFormat(format)
+				# log.debug('style: {}, indent: {}'.format(style, indent))
+			else: c.createList(-1)
+
+		c = self.editor.textCursor()
+
+		if c.hasSelection():
+			temp = c.blockNumber()
+		# c.setPosition(c.anchor())
+		# diff = c.blockNumber() - temp
+		# direction = QTextCursor.Up if diff > 0 else QTextCursor.Down
+		# for n in range(abs(diff) + 1):
+		# 	numOrBullet()
+		# 	c.movePosition(direction)
+		else: bulletOrNumber()
 
  	# typingHandler #
 
@@ -216,7 +276,7 @@ class NoteEditor(QDialog):
 
  		c = self.editor.textCursor()
 		if c.hasSelection(): return True
-		
+
 		if c.blockNumber() == 0:
 			if self.is_editing_title == False:
 				self.is_editing_title = True
@@ -233,12 +293,12 @@ class NoteEditor(QDialog):
 			self.editor.setCurrentCharFormat(self.currentChartFormat)
 		elif self.editor.textCursor().atBlockEnd():
 			self.editor.setCurrentCharFormat(self.currentChartFormat)
-		
+
 		else:
 			current_format = c.charFormat()
 			c.movePosition(c.Right)
 			right_format = c.charFormat()
-			 
+
 			#weight (bold)
 			if current_format.fontWeight() != right_format.fontWeight():
 				current_format.setFontWeight(QFont.Normal)
@@ -252,11 +312,11 @@ class NoteEditor(QDialog):
 				current_format.setFontStrikeOut(False)
 
 			# highlight
-			if current_format.background().color().name() != right_format.background().color().name():	
+			if current_format.background().color().name() != right_format.background().color().name():
 				color = QColor()
 				color.setNamedColor('#ffffff')
 				current_format.setBackground(QBrush(color))
-	
+
 			self.editor.setCurrentCharFormat(current_format)
 
 	## Event Set ##
@@ -286,7 +346,7 @@ class NoteEditor(QDialog):
 				else:
 					self.mouse_under_text =''
 					pass # do other stuff
-		
+
 		# if event.type() not in [77, 1, 12]: print(event_type[event.type()])
 
 		if event.type() == QEvent.KeyRelease:
