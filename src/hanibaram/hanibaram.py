@@ -63,17 +63,20 @@ class NoteEditor(QDialog):
 
 		# self.highlight = Highlighter(self.editor.document())
 		# self.highlight.addKeyword('class')
-		# self.highlight.addKeyword('clas.cs')
 
 		self.resize(700, 700)
 		self.mouse_under_text = ''
 		self.is_editing_title = False
-		self.__declineInstance()
+		self.__defineInstance()
+		self.__setShortCut()
 		self.note = Note()
 
-	def __declineInstance(self):
+	def __defineInstance(self):
 		self.color_white = '#ffffff'
 		self.color_highlight = '#ffff00'
+
+	def __setShortCut(self):
+		pass
 
 	def isTitle(self):
 		return True if self.editor.textCursor().blockNumber() == 0 else False
