@@ -174,10 +174,7 @@ class NoteEditor(QDialog):
 		def indentLine(c):
 			textList = c.currentList()
 			if type(textList) == QTextList:
-				if self.isBulletIndent(c):
-					self.editor.giveBulletIndent(c, 1)
-				else:
-					self.editor.giveNumberIndent(c, 1)
+				self.editor.giveList(c, 1)
 			else: c.createList(-1)
 
 		c = self.editor.textCursor()
@@ -196,13 +193,9 @@ class NoteEditor(QDialog):
 		if self.isTitle(): return
 
 		def dedentLine(c):
-			if self.isBulletIndent(c):
-				self.editor.giveBulletIndent(c, -1)
-			else:
-				self.editor.giveNumberIndent(c, -1)
+			self.editor.giveList(c, -1)
 
 		c = self.editor.textCursor()
-
 		if c.hasSelection():
 			temp = c.blockNumber()
 			c.setPosition(c.anchor())
@@ -214,25 +207,14 @@ class NoteEditor(QDialog):
 		else:
 			dedentLine(c)
 
-	def isBulletIndent(self, c): # qtextedit로 옮기자
-		textList = c.currentList()
-		if type(textList) == QTextList:
-			format = textList.format()
-			indent = format.indent()
-			style = format.style()
-			if -3 <= style <= -1:
-				return True
-		return False # Number, default stentence, or Else
-
 	def textNumOrBullet(self):
 		if self.isTitle(): return
 
 		def bulletOrNumber():
-			if self.isBulletIndent(c):
-				self.editor.giveNumberIndent(c)
+			if self.editor.isBulletIndent(c):
+				self.editor.giveList(c, list_style = self.editor.LIST_STYLE_NUMBER)
 			else:
-				self.editor.giveBulletIndent(c)
-
+				self.editor.giveList(c, list_style = self.editor.LIST_STYLE_BULLET)
 
 		c = self.editor.textCursor()
 

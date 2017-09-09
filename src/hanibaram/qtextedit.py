@@ -18,9 +18,14 @@ class TextEdit(QTextEdit):
 	def __init__(self, parent=None):
 		super(TextEdit, self).__init__(parent)
 
-		self.is_editing_title = False
+		self.__define_instance()
 		self.currentChartFormat = self.currentCharFormat()
 		self.textChanged.connect(self.typingHandler)
+
+	def __define_instance(self):
+		self.is_editing_title = False
+		self.LIST_STYLE_BULLET = -1
+		self.LIST_STYLE_NUMBER = -2
 
 	def keyPressEvent(self, QKeyEvent):
 		log.debug('QKeyEvent.key(): {}'.format(keyCode(QKeyEvent.key())))
@@ -45,7 +50,7 @@ class TextEdit(QTextEdit):
 				current_list = c.currentList()
 				if current_list:
 					bullet = self.isBulletIndent(c)
-					# current_list.remove(c.block())
+				# current_list.remove(c.block())
 
 		if QKeyEvent.key() in [Qt.Key_Down, Qt.Key_PageDown]:
 			self.typingHandler(event_type='title')
@@ -63,11 +68,13 @@ class TextEdit(QTextEdit):
 				return True
 		return False # Number or default stentence
 
-	def giveBulletIndent(self, c,move = 0, indent = None):
+	def giveList(self, c, move = 0, list_style = None, indent = None):
+
 		textList = c.currentList()
 		if type(textList) == QTextList:
 			format = textList.format()
-			indent = format.indent() + move if format.indent() is not 0 else 0
+			if not indent:
+				indent = format.indent() + move if format.indent() is not 0 else 0
 
 			if indent <= 0:
 				format.setIndent(0)
@@ -77,50 +84,19 @@ class TextEdit(QTextEdit):
 
 			format.setIndent(indent)
 			style = format.style()
-			format.setStyle(-(((indent-1) % 3)+1))
+			if list_style == self.LIST_STYLE_BULLET:
+				bullet_list = True
+			elif list_style == self.LIST_STYLE_NUMBER:
+				bullet_list = False
+			else:
+   				bullet_list = self.isBulletIndent(c)
+
+			if bullet_list:
+				format.setStyle(-(((indent-1) % 3)+1))
+			else: # number list
+				format.setStyle(-(((indent - 1) % 5) + 4))
 			textList.setFormat(format)
-			log.debug('giveBulletIndent: style: {}, indent: {}'.format(style, indent))
-		else:
-			c.createList(-1)
-
-	def giveNumberIndent(self, c, move = 0, indent = None):
-		textList = c.currentList()
-		if type(textList) == QTextList:
-			format = textList.format()
-			indent = format.indent() + move if format.indent() is not 0 else 0
-
-			if indent <= 0:
-				format.setIndent(0)
-				textList.setFormat(format)
-				textList.remove(c.block())
-				return
-
-			format.setIndent(indent)
-			style = format.style()
-			format.setStyle(-(((indent-1) % 5) + 4))
-			textList.setFormat(format)
-			log.debug('giveNumberIndent: style: {}, indent: {}'.format(style, indent))
-		else:
-			if move is not -1 : c.createList(-4)
-
-	def giveIndent(self, c,move = 0,bullet_indent = True, indent = None):
-		
-		textList = c.currentList()
-		if type(textList) == QTextList:
-			format = textList.format()
-			indent = format.indent() + move if format.indent() is not 0 else 0
-
-			if indent <= 0:
-				format.setIndent(0)
-				textList.setFormat(format)
-				textList.remove(c.block())
-				return
-
-			format.setIndent(indent)
-			style = format.style()
-			format.setStyle(-(((indent-1) % 3)+1))
-			textList.setFormat(format)
-			log.debug('giveBulletIndent: style: {}, indent: {}'.format(style, indent))
+			log.debug('giveList: style: {}, indent: {}'.format(style, indent))
 		else:
 			c.createList(-1)
 
