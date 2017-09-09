@@ -30,6 +30,7 @@ class TextEdit(QTextEdit):
 			if QKeyEvent.key() == Qt.Key_Return:  # prevent Return Key on Title
 				self.moveCursor(QTextCursor.Down)
 				self.typingHandler(event_type='title')
+				# self.setTitle()
 				return
 
 		elif c.blockNumber() == 1 and c.blockNumber() == 1: # prevent Backspace Key on start of  line after title
@@ -41,20 +42,91 @@ class TextEdit(QTextEdit):
 		elif c.blockNumber() != 0:
 			if QKeyEvent.key() == Qt.Key_Return:
 				self.setCurrentCharFormat(self.currentChartFormat)
-				# bullet = self.isBulletIndent(c)
-				# current_list = c.currentList()
-				# if current_list: current_list.remove(c.block())
+				current_list = c.currentList()
+				if current_list:
+					bullet = self.isBulletIndent(c)
+					# current_list.remove(c.block())
 
 		if QKeyEvent.key() in [Qt.Key_Down, Qt.Key_PageDown]:
 			self.typingHandler(event_type='title')
 
 		QTextEdit.keyPressEvent(self, QKeyEvent)
 
-	def typingHandler(self, event_type = None):
-		def wiki_rule():
-			pass
+	## methods about indent ##
+	def isBulletIndent(self, c):
+		textList = c.currentList()
+		if type(textList) == QTextList:
+			format = textList.format()
+			indent = format.indent()
+			style = format.style()
+			if -3 <= style <= -1:
+				return True
+		return False # Number or default stentence
 
+	def giveBulletIndent(self, c,move = 0, indent = None):
+		textList = c.currentList()
+		if type(textList) == QTextList:
+			format = textList.format()
+			indent = format.indent() + move if format.indent() is not 0 else 0
+
+			if indent <= 0:
+				format.setIndent(0)
+				textList.setFormat(format)
+				textList.remove(c.block())
+				return
+
+			format.setIndent(indent)
+			style = format.style()
+			format.setStyle(-(((indent-1) % 3)+1))
+			textList.setFormat(format)
+			log.debug('giveBulletIndent: style: {}, indent: {}'.format(style, indent))
+		else:
+			c.createList(-1)
+
+	def giveNumberIndent(self, c, move = 0, indent = None):
+		textList = c.currentList()
+		if type(textList) == QTextList:
+			format = textList.format()
+			indent = format.indent() + move if format.indent() is not 0 else 0
+
+			if indent <= 0:
+				format.setIndent(0)
+				textList.setFormat(format)
+				textList.remove(c.block())
+				return
+
+			format.setIndent(indent)
+			style = format.style()
+			format.setStyle(-(((indent-1) % 5) + 4))
+			textList.setFormat(format)
+			log.debug('giveNumberIndent: style: {}, indent: {}'.format(style, indent))
+		else:
+			if move is not -1 : c.createList(-4)
+
+	def giveIndent(self, c,move = 0,bullet_indent = True, indent = None):
+		
+		textList = c.currentList()
+		if type(textList) == QTextList:
+			format = textList.format()
+			indent = format.indent() + move if format.indent() is not 0 else 0
+
+			if indent <= 0:
+				format.setIndent(0)
+				textList.setFormat(format)
+				textList.remove(c.block())
+				return
+
+			format.setIndent(indent)
+			style = format.style()
+			format.setStyle(-(((indent-1) % 3)+1))
+			textList.setFormat(format)
+			log.debug('giveBulletIndent: style: {}, indent: {}'.format(style, indent))
+		else:
+			c.createList(-1)
+
+	def typingHandler(self, event_type = None):
 		def setTitle():
+			# c = self.textCursor()
 			c.movePosition(c.Start)
 			c.select(QTextCursor.LineUnderCursor)
 			selected_text = c.selectedText()
@@ -65,6 +137,9 @@ class TextEdit(QTextEdit):
 			c.setCharFormat(format)
 			if selected_text != selected_text.trimmed():
 				c.insertText(selected_text.trimmed())
+		# log.debug('')
+		def wiki_rule():
+			pass
 
 		c = self.textCursor()
 		if c.hasSelection(): return True

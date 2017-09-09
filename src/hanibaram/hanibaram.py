@@ -112,7 +112,7 @@ class NoteEditor(QDialog):
 		html = note.html
 		self.editor.setHtml(html)
 		c = self.editor.textCursor()
-	# 타이틀이나 여는 시간등도 설정할 것.
+		# 타이틀이나 여는 시간등도 설정할 것.
 
 	## MenuBar Function ##
 	# File Menu #
@@ -175,9 +175,9 @@ class NoteEditor(QDialog):
 			textList = c.currentList()
 			if type(textList) == QTextList:
 				if self.isBulletIndent(c):
-					self.giveBulletIndent(c, 1)
+					self.editor.giveBulletIndent(c, 1)
 				else:
-					self.giveNumberIndent(c, 1)
+					self.editor.giveNumberIndent(c, 1)
 			else: c.createList(-1)
 
 		c = self.editor.textCursor()
@@ -197,9 +197,9 @@ class NoteEditor(QDialog):
 
 		def dedentLine(c):
 			if self.isBulletIndent(c):
-				self.giveBulletIndent(c, -1)
+				self.editor.giveBulletIndent(c, -1)
 			else:
-				self.giveNumberIndent(c, -1)
+				self.editor.giveNumberIndent(c, -1)
 
 		c = self.editor.textCursor()
 
@@ -214,7 +214,7 @@ class NoteEditor(QDialog):
 		else:
 			dedentLine(c)
 
-	def isBulletIndent(self, c):
+	def isBulletIndent(self, c): # qtextedit로 옮기자
 		textList = c.currentList()
 		if type(textList) == QTextList:
 			format = textList.format()
@@ -224,54 +224,14 @@ class NoteEditor(QDialog):
 				return True
 		return False # Number, default stentence, or Else
 
-	def giveBulletIndent(self, c, move = 0):
-		textList = c.currentList()
-		if type(textList) == QTextList:
-			format = textList.format()
-			indent = format.indent() + move if format.indent() is not 0 else 0
-
-			if indent <= 0:
-				format.setIndent(0)
-				textList.setFormat(format)
-				textList.remove(c.block())
-				return
-
-			format.setIndent(indent)
-			style = format.style()
-			format.setStyle(-(((indent-1) % 3)+1))
-			textList.setFormat(format)
-			log.debug('giveBulletIndent: style: {}, indent: {}'.format(style, indent))
-		else:
-			c.createList(-1)
-
-	def giveNumberIndent(self, c, move = 0):
-		textList = c.currentList()
-		if type(textList) == QTextList:
-			format = textList.format()
-			indent = format.indent() + move if format.indent() is not 0 else 0
-
-			if indent <= 0:
-				format.setIndent(0)
-				textList.setFormat(format)
-				textList.remove(c.block())
-				return
-
-			format.setIndent(indent)
-			style = format.style()
-			format.setStyle(-(((indent-1) % 5) + 4))
-			textList.setFormat(format)
-			log.debug('giveNumberIndent: style: {}, indent: {}'.format(style, indent))
-		else:
-			if move is not -1 : c.createList(-4)
-
 	def textNumOrBullet(self):
 		if self.isTitle(): return
 
 		def bulletOrNumber():
 			if self.isBulletIndent(c):
-				self.giveNumberIndent(c)
+				self.editor.giveNumberIndent(c)
 			else:
-				self.giveBulletIndent(c)
+				self.editor.giveBulletIndent(c)
 
 
 		c = self.editor.textCursor()
