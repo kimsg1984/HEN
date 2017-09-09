@@ -32,14 +32,12 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
 try:
-	 from highlighter import Highlighter
-except ImportError, err:
- 	log.warning("Error: %s%s" % (str(err), os.linesep))
- 	sys.exit(1)
-
-try:
+	from highlighter import Highlighter
 	from note import Note
-	from reference import event_type, font_size, key_type
+	from reference import event_type
+	from reference import font_size
+	from reference import key_type
+	from qtextedit import TextEdit
 
 except ImportError, err:
 	log.warning("Error: %s%s" % (str(err), os.linesep))
@@ -47,32 +45,10 @@ except ImportError, err:
 
 def keyCode(code): return key_type[code] if key_type.has_key(code) else code
 
-class TextEdit(QTextEdit):
-	def __init__(self, parent=None):
-		super(TextEdit, self).__init__(parent)
-
-	def keyPressEvent(self, QKeyEvent):
-		log.debug('QKeyEvent.key(): {}'.format(keyCode(QKeyEvent.key()))) # for get the Key
-		c = self.textCursor()
-		if c.blockNumber() == 0:
-			if QKeyEvent.key() == Qt.Key_Return:  # prevent Return Key on Title
-				self.moveCursor(QTextCursor.Down)
-				# self.textCursor().insertText('\n')
-				# self.moveCursor(QTextCursor.Up)
-				return
-
-		elif c.blockNumber() == 1:
-			if QKeyEvent.key() == Qt.Key_Backspace and c.blockNumber() == 1:
-				self.moveCursor(QTextCursor.Up)
-				self.moveCursor(QTextCursor.EndOfLine)
-				return
-
-		QTextEdit.keyPressEvent(self, QKeyEvent)
-
-
 class NoteEditor(QDialog):
 	def __init__(self, parent=None):
 		super(NoteEditor, self).__init__(parent)
+		# self.editor = TextEdit()
 		self.editor = TextEdit()
 		self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 		self.editor.setAcceptRichText(False)
@@ -93,19 +69,14 @@ class NoteEditor(QDialog):
 		self.mouse_under_text = ''
 		self.is_editing_title = False
 		self.__declineInstance()
-
 		self.note = Note()
-		self.currentChartFormat = self.editor.currentCharFormat()
-		self.editor.textChanged.connect(self.typingHandler)
 
 	def __declineInstance(self):
 		self.color_white = '#ffffff'
 		self.color_highlight = '#ffff00'
 
-
 	def isTitle(self):
 		return True if self.editor.textCursor().blockNumber() == 0 else False
-
 
 	def setupMenu(self):
 
@@ -199,17 +170,14 @@ class NoteEditor(QDialog):
 
 	def textIndent(self):
 		if self.isTitle(): return
+
 		def indentLine(c):
 			textList = c.currentList()
-
 			if type(textList) == QTextList:
-				format = textList.format()
-				indent = format.indent()
-				style = format.style()
-				format.setIndent(indent + 1)
-				format.setStyle(-(((indent) % 3) +1))
-				textList.setFormat(format)
-				log.debug('style: {}, indent: {}'.format(style, indent))
+				if self.isBulletIndent(c):
+					self.giveBulletIndent(c, 1)
+				else:
+					self.giveNumberIndent(c, 1)
 			else: c.createList(-1)
 
 		c = self.editor.textCursor()
@@ -226,21 +194,12 @@ class NoteEditor(QDialog):
 
 	def textDedent(self):
 		if self.isTitle(): return
-		def dedentLine(c):
-			textList = c.currentList()
-			if type(textList) == QTextList:
-				format = textList.format()
-				indent = format.indent()
-				style = format.style()
 
-				format.setIndent(indent -1)
-				log.debug('style: {}, indent: {}'.format(style, indent))
-				format.setStyle(-(((indent-2) % 3) +1))
-				textList.setFormat(format)
-				if indent <= 1:
-					format.setIndent(0)
-					textList.setFormat(format)
-					textList.remove(c.block())
+		def dedentLine(c):
+			if self.isBulletIndent(c):
+				self.giveBulletIndent(c, -1)
+			else:
+				self.giveNumberIndent(c, -1)
 
 		c = self.editor.textCursor()
 
@@ -265,11 +224,19 @@ class NoteEditor(QDialog):
 				return True
 		return False # Number, default stentence, or Else
 
-	def giveBulletIndent(self, c):
+	def giveBulletIndent(self, c, move = 0):
 		textList = c.currentList()
 		if type(textList) == QTextList:
 			format = textList.format()
-			indent = format.indent()
+			indent = format.indent() + move if format.indent() is not 0 else 0
+
+			if indent <= 0:
+				format.setIndent(0)
+				textList.setFormat(format)
+				textList.remove(c.block())
+				return
+
+			format.setIndent(indent)
 			style = format.style()
 			format.setStyle(-(((indent-1) % 3)+1))
 			textList.setFormat(format)
@@ -277,17 +244,25 @@ class NoteEditor(QDialog):
 		else:
 			c.createList(-1)
 
-	def giveNumberIndent(self, c):
+	def giveNumberIndent(self, c, move = 0):
 		textList = c.currentList()
 		if type(textList) == QTextList:
 			format = textList.format()
-			indent = format.indent()
+			indent = format.indent() + move if format.indent() is not 0 else 0
+
+			if indent <= 0:
+				format.setIndent(0)
+				textList.setFormat(format)
+				textList.remove(c.block())
+				return
+
+			format.setIndent(indent)
 			style = format.style()
 			format.setStyle(-(((indent-1) % 5) + 4))
 			textList.setFormat(format)
 			log.debug('giveNumberIndent: style: {}, indent: {}'.format(style, indent))
 		else:
-			c.createList(-4)
+			if move is not -1 : c.createList(-4)
 
 	def textNumOrBullet(self):
 		if self.isTitle(): return
@@ -306,73 +281,10 @@ class NoteEditor(QDialog):
 		else:
 			bulletOrNumber()
 
-
-	# typingHandler #
-
-	def typingHandler(self, event_type = None):
-		def wiki_rule():
-			pass
-
-		def setTitle():
-			c.movePosition(c.Start)
-			c.select(QTextCursor.LineUnderCursor)
-			selected_text = c.selectedText()
-			format = c.charFormat()
-			format.setFontPointSize(20)
-			format.setForeground(Qt.blue)
-			format.setFontUnderline(True)
-			c.setCharFormat(format)
-			if selected_text != selected_text.trimmed():
-				c.insertText(selected_text.trimmed())
-
-		c = self.editor.textCursor()
-		if c.hasSelection(): return True
-
-		if c.blockNumber() == 0:
-			if self.is_editing_title == False:
-				self.is_editing_title = True
-				setTitle()
-			return True
-
-		if c.blockNumber() != 0 and self.is_editing_title == True: # 제목편집 완료
-			self.is_editing_title = False
-			setTitle()
-		if event_type == 'title': return True
-
-		c_selected = self.editor.textCursor()
-		if self.editor.textCursor().atBlockStart():
-			self.editor.setCurrentCharFormat(self.currentChartFormat)
-		elif self.editor.textCursor().atBlockEnd():
-			self.editor.setCurrentCharFormat(self.currentChartFormat)
-
-		else:
-			current_format = c.charFormat()
-			c.movePosition(c.Right)
-			right_format = c.charFormat()
-
-			#weight (bold)
-			if current_format.fontWeight() != right_format.fontWeight():
-				current_format.setFontWeight(QFont.Normal)
-
-			# italac
-			if current_format.fontItalic() != right_format.fontItalic():
-				current_format.setFontItalic(False)
-
-			# strikethrough
-			if current_format.fontStrikeOut() != right_format.fontStrikeOut():
-				current_format.setFontStrikeOut(False)
-
-			# highlight
-			if current_format.background().color().name() != right_format.background().color().name():
-				color = QColor()
-				color.setNamedColor(self.color_white)
-				current_format.setBackground(QBrush(color))
-
-			self.editor.setCurrentCharFormat(current_format)
-
-	## Event Set ##
+	## Mouse Event Set ##
 
 	def eventFilter(self, source, event):
+		c = self.editor.textCursor()
 		if event.type() == QEvent.MouseMove:
 			if event.buttons() == Qt.NoButton:
 				pos = event.pos()
@@ -397,15 +309,5 @@ class NoteEditor(QDialog):
 				else:
 					self.mouse_under_text =''
 					pass # do other stuff
-
-		# if event.type() not in [77, 1, 12]: print(event_type[event.type()])
-
-		if event.type() == QEvent.KeyRelease:
-			if event.key() in [Qt.Key_Down, Qt.Key_PageDown]:
-				self.typingHandler(event_type = 'title')
-
-		if event.type() == QEvent.KeyPress:
-			if event.key() == Qt.Key_Return:
-				self.editor.setCurrentCharFormat(self.currentChartFormat)
 
 		return self.editor.eventFilter(self, event)

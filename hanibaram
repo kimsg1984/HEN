@@ -54,7 +54,7 @@ class Main():
 		else:
 			log_level = logging.INFO
 
-		logging.basicConfig(format = '%(asctime)s [%(filename)s:%(lineno)s|%(levelname)s]\t %(message)s', level = log_level)
+		logging.basicConfig(format = '%(asctime)s [%(filename)s:%(lineno)s|%(levelname)s] %(funcName)s(): \t %(message)s', level = log_level)
 		log = logging.getLogger('root')
 
 		try:
