@@ -6,7 +6,7 @@ from distutils.core import setup
 
 sys.path.append(os.path.realpath("src"))
 
-setup(name = "hanibaram",
+setup(name = "hen",
         version = "0.1",
         description = "PyQt Wiki-Wiki Text Editor",
         long_description = "Python port of Wiki-Wiki texteditor.",
@@ -14,9 +14,9 @@ setup(name = "hanibaram",
         author_email = "kimsg1984@gmail.com",
         license = "GNU GPLv3",
         url = "",
-        packages = ["hanibaram "],
+        packages = ["hen "],
         package_dir = {"": "src"},
-        scripts = ["hanibaram "],
+        scripts = ["hen "],
         requires = ["PyQt4"],
         platforms = ["Linux", "Windows", "OSX"]
         )

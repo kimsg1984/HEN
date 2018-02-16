@@ -20,6 +20,7 @@ class TextEdit(QTextEdit):
 
 		self.__defineInstance()
 		self.__setShortCut()
+		# self.setLayoutDirection(2)
 		self.currentChartFormat = self.currentCharFormat()
 		self.textChanged.connect(self.typingHandler)
 
@@ -84,18 +85,16 @@ class TextEdit(QTextEdit):
 
 			if type(current_list) == QTextList and c.columnNumber() == 0:
 				indent = current_list.format().indent()
-				style_bullet = self.LIST_STYLE_BULLET if self.isBulletIndent(c) else self.LIST_STYLE_NUMBER
-
 				if QKeyEvent.key() == Qt.Key_Tab:
 					self.removeList(c)
-					self.giveList(self.textCursor(),1, list_style = style_bullet, indent = indent)
-					log.debug('Tab key With List. indent: {}, style_bullet = {}'.format(indent, style_bullet))
+					self.giveList(self.textCursor(),1, indent = indent)
+					log.debug('Tab key With List. indent: {}'.format(indent))
 					return True
 
 				if QKeyEvent.key() == Qt.Key_Backspace:
 					self.removeList(c)
-					self.giveList(self.textCursor(),-1, list_style = style_bullet, indent = indent)
-					log.debug('BackSpace key With List. indent: {}, style_bullet = {}'.format(indent, style_bullet))
+					self.giveList(self.textCursor(),-1, indent = indent)
+					log.debug('BackSpace key With List. indent: {}'.format(indent))
 					return True
 
 		if QKeyEvent.key() in [Qt.Key_Down, Qt.Key_PageDown]:
@@ -104,28 +103,18 @@ class TextEdit(QTextEdit):
 		return False
 
 ## methods about indent ##
-	def isBulletIndent(self, c):
-		textList = c.currentList()
-		if type(textList) == QTextList:
-			format = textList.format()
-			indent = format.indent()
-			style = format.style()
-			if -3 <= style <= -1:
-				return True
-		return False # Number or default stentence
 
-	def giveList(self, c, move = 0, list_style = None, indent = None):
-		log.debug('move = {}, list_style = {}, indent = {}'.format(move, list_style, indent))
+	def giveList(self, c, move = 0, indent = None):
+		log.debug('move = {}, indent = {}'.format(move, indent))
 		textList = c.currentList()
 
 		def setList(indent):
-			log.debug('move = {}, list_style = {}, indent = {}'.format(move, list_style, indent))
+			log.debug('move = {}, indent = {}'.format(move, indent))
 			format = textList.format()
 			if indent:
 				indent = indent + move
 			else:
 				indent = format.indent() + move if format.indent() is not 0 else 0
-
 
 			if indent <= 0:
 				self.removeList(c)
@@ -134,23 +123,13 @@ class TextEdit(QTextEdit):
 
 			format.setIndent(indent)
 			style = format.style()
-			if list_style == self.LIST_STYLE_BULLET:
-				bullet_list = True
-			elif list_style == self.LIST_STYLE_NUMBER:
-				bullet_list = False
-			else:
-				bullet_list = self.isBulletIndent(c)
 
-			if bullet_list:
-				format.setStyle(-(((indent - 1) % 3) + 1))
-			else:  # number list
-				format.setStyle(-(((indent - 1) % 5) + 4))
+			format.setStyle(-(((indent - 1) % 3) + 1))
 			textList.setFormat(format)
-
 		if type(textList) == QTextList:
 			setList(indent)
 		else:
-			if move == 0: return
+			if move == -1: return
 			else:
 				textList = c.createList(-1)
 				print(indent)

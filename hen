@@ -43,7 +43,7 @@ class Main():
 		argv.append('-d')
 		usage = u"Usage: %prog [options]"
 		parser = __import__('optparse').OptionParser(usage)
-	
+
 		## Parser Option ##	
 		parser.add_option('-d', '--debug', dest='debug', action='store_true', help=u'debugging mode')
 		
@@ -63,17 +63,17 @@ class Main():
 			log.warning("Error: %s%s" % (str(err), os.linesep))
 			sys.exit(1)
 		try:
-			from hanibaram.hanibaram import NoteEditor
-			from hanibaram.note import Note
+			from hen.hen import EggEditor
+			from hen.egg import Egg
 		except ImportError, err:
 			log.warning("Error: %s%s" % (str(err), os.linesep))
 			sys.exit(1)
 
 		self.app = QApplication(argv)
-		self.editor = NoteEditor()
+		self.editor = EggEditor()
 		self.app.installEventFilter(self.editor)
 		self.editor.show()
-		note = Note()
+		note = Egg()
 		note.setFile(os.path.join(notes_dir, 'test2.note'))
 		self.editor.setNote(note)
 

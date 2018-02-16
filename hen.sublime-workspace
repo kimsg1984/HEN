@@ -25,47 +25,47 @@
 			],
 			[
 				"setSize",
-				"setSizePolicy	function"
+				"setSizePolicy\tfunction"
 			],
 			[
 				"add",
-				"addWidget	function"
+				"addWidget\tfunction"
 			],
 			[
 				"pix",
-				"pixmap2	statement"
+				"pixmap2\tstatement"
 			],
 			[
 				"set",
-				"setLayout	function"
+				"setLayout\tfunction"
 			],
 			[
 				"setB",
-				"setBackgroundBrush	function"
+				"setBackgroundBrush\tfunction"
 			],
 			[
 				"def",
-				"defs	Method"
+				"defs\tMethod"
 			],
 			[
 				"in",
-				"inputContext	function"
+				"inputContext\tfunction"
 			],
 			[
 				"mou",
-				"mouseReleaseEvent	function"
+				"mouseReleaseEvent\tfunction"
 			],
 			[
 				"dic",
-				"dictionary	statement"
+				"dictionary\tstatement"
 			],
 			[
 				"type",
-				"types_of_book	statement"
+				"types_of_book\tstatement"
 			],
 			[
 				"xpa",
-				"xpath_content	param"
+				"xpath_content\tparam"
 			],
 			[
 				"xpath",
@@ -73,19 +73,19 @@
 			],
 			[
 				"pa",
-				"params	statement"
+				"params\tstatement"
 			],
 			[
 				"res",
-				"result_file	statement"
+				"result_file\tstatement"
 			],
 			[
 				"tabl",
-				"table_script	statement"
+				"table_script\tstatement"
 			],
 			[
 				"p",
-				"pyperclip	module"
+				"pyperclip\tmodule"
 			],
 			[
 				"ori",
@@ -93,7 +93,7 @@
 			],
 			[
 				"pro",
-				"pronoun	statement"
+				"pronoun\tstatement"
 			],
 			[
 				"mean",
@@ -101,23 +101,23 @@
 			],
 			[
 				"ret",
-				"return_all	param"
+				"return_all\tparam"
 			],
 			[
 				"on",
-				"onDeleteImage	function"
+				"onDeleteImage\tfunction"
 			],
 			[
 				"is",
-				"isdir	function"
+				"isdir\tfunction"
 			],
 			[
 				"e",
-				"exists	function"
+				"exists\tfunction"
 			],
 			[
 				"ex",
-				"expanduser	function"
+				"expanduser\tfunction"
 			],
 			[
 				"T",
@@ -125,7 +125,7 @@
 			],
 			[
 				"P",
-				"Parent	statement"
+				"Parent\tstatement"
 			],
 			[
 				"onRe",
@@ -133,7 +133,7 @@
 			],
 			[
 				"ID_A",
-				"ID_ANY	statement"
+				"ID_ANY\tstatement"
 			],
 			[
 				"Lo",
@@ -141,19 +141,19 @@
 			],
 			[
 				"DF_",
-				"DF_TEXT	statement"
+				"DF_TEXT\tstatement"
 			],
 			[
 				"DF",
-				"DF_FILENAME	statement"
+				"DF_FILENAME\tstatement"
 			],
 			[
 				"Get",
-				"GetBitmap	function"
+				"GetBitmap\tfunction"
 			],
 			[
 				"opt",
-				"optionparser	optionparser"
+				"optionparser\toptionparser"
 			],
 			[
 				"Op",
@@ -165,31 +165,31 @@
 			],
 			[
 				"whi",
-				"which_way_to_go	statement"
+				"which_way_to_go\tstatement"
 			],
 			[
 				"next",
-				"nextFolder	function"
+				"nextFolder\tfunction"
 			],
 			[
 				"fo",
-				"folder_flip	statement"
+				"folder_flip\tstatement"
 			],
 			[
 				"li",
-				"listdir	function"
+				"listdir\tfunction"
 			],
 			[
 				"Im",
-				"ImageCtrl	statement"
+				"ImageCtrl\tstatement"
 			],
 			[
 				"save",
-				"save_folder_jackpum	statement"
+				"save_folder_jackpum\tstatement"
 			],
 			[
 				"save_fo",
-				"save_folder_jackpum	statement"
+				"save_folder_jackpum\tstatement"
 			],
 			[
 				"Main",
@@ -197,7 +197,7 @@
 			],
 			[
 				"ch",
-				"chapter_and_verse	statement"
+				"chapter_and_verse\tstatement"
 			],
 			[
 				"cont",
@@ -205,51 +205,51 @@
 			],
 			[
 				"debug",
-				"debug_mode	statement"
+				"debug_mode\tstatement"
 			],
 			[
 				"file",
-				"file_name	param"
+				"file_name\tparam"
 			],
 			[
 				"anoth",
-				"another_file_name	statement"
+				"another_file_name\tstatement"
 			],
 			[
 				"fil",
-				"filename	statement"
+				"filename\tstatement"
 			],
 			[
 				"com",
-				"comment	param"
+				"comment\tparam"
 			],
 			[
 				"d",
-				"download_file	function"
+				"download_file\tfunction"
 			],
 			[
 				"t",
-				"telepot	module"
+				"telepot\tmodule"
 			],
 			[
 				"__",
-				"__file__	instance"
+				"__file__\tinstance"
 			],
 			[
 				"list",
-				"list_name	statement"
+				"list_name\tstatement"
 			],
 			[
 				"con",
-				"configparser	module"
+				"configparser\tmodule"
 			],
 			[
 				"re",
-				"recipe_file	param"
+				"recipe_file\tparam"
 			],
 			[
 				"get",
-				"getcwd	function"
+				"getcwd\tfunction"
 			],
 			[
 				"cmd",
@@ -261,43 +261,43 @@
 			],
 			[
 				"no",
-				"nodeManager	class"
+				"nodeManager\tclass"
 			],
 			[
 				"cu",
-				"current_dir	statement"
+				"current_dir\tstatement"
 			],
 			[
 				"bin",
-				"bin_path	statement"
+				"bin_path\tstatement"
 			],
 			[
 				"dir_b",
-				"dir_binarybox	statement"
+				"dir_binarybox\tstatement"
 			],
 			[
 				"i",
-				"islink	function"
+				"islink\tfunction"
 			],
 			[
 				"bi",
-				"binaries	statement"
+				"binaries\tstatement"
 			],
 			[
 				"dir",
-				"dir_bin	statement"
+				"dir_bin\tstatement"
 			],
 			[
 				"gen",
-				"generate_bin_others	function"
+				"generate_bin_others\tfunction"
 			],
 			[
 				"genera",
-				"generate_bin_others	function"
+				"generate_bin_others\tfunction"
 			],
 			[
 				"gene",
-				"generate_binary	function"
+				"generate_binary\tfunction"
 			],
 			[
 				"path",
@@ -309,23 +309,23 @@
 			],
 			[
 				"ip",
-				"ip_address	statement"
+				"ip_address\tstatement"
 			],
 			[
 				"return_list_b",
-				"return_list_by_client_name	function"
+				"return_list_by_client_name\tfunction"
 			],
 			[
 				"return_list_",
-				"return_list_by_mac	function"
+				"return_list_by_mac\tfunction"
 			],
 			[
 				"print_list_b",
-				"print_list_by_client_name	function"
+				"print_list_by_client_name\tfunction"
 			],
 			[
 				"print_list_by",
-				"print_list_by_mac	function"
+				"print_list_by_mac\tfunction"
 			],
 			[
 				"dhcpd",
@@ -333,15 +333,15 @@
 			],
 			[
 				"tab",
-				"tab_count_min	statement"
+				"tab_count_min\tstatement"
 			],
 			[
 				"retu",
-				"return_list	param"
+				"return_list\tparam"
 			],
 			[
 				"ser",
-				"server_names	statement"
+				"server_names\tstatement"
 			],
 			[
 				"dhcp",
@@ -349,11 +349,11 @@
 			],
 			[
 				"print",
-				"print_list	function"
+				"print_list\tfunction"
 			],
 			[
 				"dh",
-				"dhcp_servers	statement"
+				"dhcp_servers\tstatement"
 			],
 			[
 				"server",
@@ -361,15 +361,15 @@
 			],
 			[
 				"ren",
-				"renew_dhcp_list	function"
+				"renew_dhcp_list\tfunction"
 			],
 			[
 				"dhc",
-				"dhcp_ips	statement"
+				"dhcp_ips\tstatement"
 			],
 			[
 				"DHCP",
-				"DHCP_Manager	class"
+				"DHCP_Manager\tclass"
 			],
 			[
 				"return_list",
@@ -377,19 +377,19 @@
 			],
 			[
 				"gr",
-				"group_dhcpd_conf	statement"
+				"group_dhcpd_conf\tstatement"
 			],
 			[
 				"lis",
-				"list_by_name	statement"
+				"list_by_name\tstatement"
 			],
 			[
 				"DH",
-				"DHCP_Server	class"
+				"DHCP_Server\tclass"
 			],
 			[
 				"di",
-				"dictionary_to_add	param"
+				"dictionary_to_add\tparam"
 			],
 			[
 				"oid",
@@ -397,11 +397,11 @@
 			],
 			[
 				"ot",
-				"optionparser	optionparser"
+				"optionparser\toptionparser"
 			],
 			[
 				"log",
-				"log_parsing	function"
+				"log_parsing\tfunction"
 			],
 			[
 				"start",
@@ -409,19 +409,19 @@
 			],
 			[
 				"cli",
-				"client_name	statement"
+				"client_name\tstatement"
 			],
 			[
 				"date",
-				"datetime	class"
+				"datetime\tclass"
 			],
 			[
 				"le",
-				"lease_list	statement"
+				"lease_list\tstatement"
 			],
 			[
 				"_",
-				"_test	statement"
+				"_test\tstatement"
 			],
 			[
 				"off",
@@ -429,19 +429,19 @@
 			],
 			[
 				"L",
-				"LogTail	class"
+				"LogTail\tclass"
 			],
 			[
 				"c_",
-				"c_split	statement"
+				"c_split\tstatement"
 			],
 			[
 				"cm",
-				"cmd_location	statement"
+				"cmd_location\tstatement"
 			],
 			[
 				"curre",
-				"current_verb	statement"
+				"current_verb\tstatement"
 			],
 			[
 				"Ele",
@@ -453,15 +453,15 @@
 			],
 			[
 				"E",
-				"Element	class"
+				"Element\tclass"
 			],
 			[
 				"boo",
-				"book_abbri_eng	statement"
+				"book_abbri_eng\tstatement"
 			],
 			[
 				"book",
-				"book_abbri_ko	statement"
+				"book_abbri_ko\tstatement"
 			],
 			[
 				"bibl",
@@ -469,11 +469,11 @@
 			],
 			[
 				"In",
-				"IndexError	class"
+				"IndexError\tclass"
 			],
 			[
 				"w",
-				"write	function"
+				"write\tfunction"
 			],
 			[
 				"ET",
@@ -523,7 +523,8 @@
 			"file": "src/hanibaram/hanibaram.py",
 			"settings":
 			{
-				"buffer_size": 9327,
+				"buffer_size": 7262,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -531,15 +532,29 @@
 			"file": "hanibaram",
 			"settings":
 			{
-				"buffer_size": 2445,
+				"buffer_size": 2604,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/backup/sungyo/tomboy/2d6c7e28-23ff-431f-b169-ab38f5677e04.note",
+			"file": "notes/test2.note",
 			"settings":
 			{
-				"buffer_size": 10162,
+				"buffer_size": 8113,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<note version=\"0.3\" xmlns:link=\"http://beatniksoftware.com/tomboy/link\" xmlns:size=\"http://beatniksoftware.com/tomboy/size\" xmlns=\"http://beatniksoftware.com/tomboy\">\n  <title>python</title>\n  <text xml:space=\"preserve\"><note-content version=\"0.1\">python\n\n<link:broken>start</link:broken>  | <link:internal>ST2</link:internal> | <link:internal>파이썬ST2스니펫</link:internal> | <link:internal>파이썬객체지향</link:internal> | <link:internal>개발언어</link:internal> | <link:internal>디자인 패턴</link:internal> | <link:internal>python3</link:internal>\n\n<list><list-item dir=\"ltr\"><link:internal>pynotify</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:class</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:cmd</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:csv</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:config</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:daemon</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:dateAndTime</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:dictionary</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:email</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:format</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:if</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:importing</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:list</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:os</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:print</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:property</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:shelve</link:internal> \t\t# File형 DB 모듈(인스턴스마저 \t저장해버리는!)\n</list-item><list-item dir=\"ltr\"><link:internal>python:start</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:subprocess</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:timecheck</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:try</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:xml</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:YesOrNo</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:with</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:zipfile</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python:웹다운로드</link:internal> \n</list-item><list-item dir=\"ltr\"><link:internal>python:웹로그인</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>python다중프로세스</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>wxpython</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>wxpython</link:internal> \n</list-item><list-item dir=\"ltr\"><link:internal>파이썬간단출력함수</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>파이썬변수</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>파이썬비교연산자</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>파이썬스트링</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>파이썬에러종류</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>파이썬키이벤트</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>파이썬표준에러출력</link:internal>\n</list-item><list-item dir=\"ltr\"><link:internal>파이썬함수로서일반행동</link:internal></list-item></list>\n\n한글고르는정규식: [가-힣]+\n\n\n<link:url>https://docs.python.org</link:url> \t\t\t파이썬 레퍼런스\n<link:url>http://blog.eairship.kr/</link:url>\t\t\t금지된 엑시노아의 비공정\n<link:url>https://python.zeef.com/luis.solis</link:url> \t파이썬 강의정리(끝판왕)\n<link:url>https://wikidocs.net/book/1</link:url>\t\t점프투파이썬\n<link:url>https://www.python.org/dev/peps/</link:url> 파이썬 홈페이지: 가장 확실한 설명?\n<link:url>/usr/lib/python2.7/dist-packages</link:url> \t# 패키지 위치\n<link:url>http://devanix.tistory.com/296</link:url>   파이썬정규식\n\n# 변수\n\na = ()\na = [] 리스트?\na = {} &lt;-- 딕셔너리???\n\n# 변수 존재 확인\n\nif 'myVar' in locals():\n  # myVar exists.\nTo check the existence of a global variable:\n\nif 'myVar' in globals():\n  # myVar exists.\nTo check if an object has an attribute:\n\nif hasattr(obj, 'attr_name'):\n  # obj.attr_name exists.\n\n# 객체가 있는지 확인하는 간단한 방법\ntry:\n   y = x\nexcept <link:broken>NameError</link:broken>:\n   print 'x does not exists'\n\n* <link:internal>로그관리</link:internal> : 시간별 제거??\n\n파이썬 log모듈\n<link:url>http://www.hanbit.co.kr/network/view.html?bi_id=1979</link:url>\n\n## 파라미터 사용법\n<link:url>http://dalkongmin.tistory.com/25</link:url>\n\n\n코드아카데미파이썬(여기까지)\n<link:url>http://www.codecademy.com/courses/introduction-to-python-6WeG3/1/1?curriculum_id=4f89dab3d788890003000096</link:url>\n\n스타일지도서(한글)\n<link:url>http://coreapython.hosting.paran.com/etc/Python%20Style%20Guide%202nd.htm</link:url>\n구글 지도서도 있음  <link:internal>코드리뷰</link:internal> : <link:url>http://google-styleguide.googlecode.com/svn/trunk/pyguide.html</link:url>\n\n파이썬에색깔 입히고 커서 움직이고..명령어만들기\n<link:url>http://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html</link:url>\n\n재귀폴더(편집파일이있는위치) = os.path.split(os.path.realpath(sys.argv[0]))[0]\ndir = os.getcwd()\n# 함수 호출할 때\n print inspect.stack()[1][3]\n&lt;강좌&gt;\n점프투파이썬: \t<link:url>https://wikidocs.net/book/1</link:url>  \n<link:url>http://codejob.co.kr/docs/view/2/</link:url><strikethrough>\n</strikethrough><link:url>http://www.tutorialspoint.com/python/index.htm</link:url><strikethrough>\n</strikethrough><link:url>http://docs.python.org/2/library/</link:url>\n\n\n<link:url>http://pythonlab.org/bbs/zboard.php?id=python</link:url><strikethrough>\n</strikethrough><link:url>http://wikidocs.net/read/book/136</link:url><strikethrough>\n</strikethrough><link:url>http://www.trypython.org/</link:url>\n\n구글클레스\n<link:url>https://developers.google.com/edu/python/?csw=1</link:url>\n\n\n&lt;외부실행데이타 저장&gt;\n<link:url>http://parkmo.egloos.com/4184564</link:url>\n\n <link:internal>php개발자를위한python</link:internal>\n\n\t<link:url>http://www.ibm.com/developerworks/kr/library/os-php-pythonbasics/</link:url>\n파이선 re library: <link:url>http://docs.python.org/library/re.html</link:url>\n\n파이썬 <link:internal>알고리즘</link:internal>(써니님)\n\t<link:url>http://blog.daum.net/_blog/BlogTypeView.do?blogid=0aHtW&amp;articleno=113&amp;categoryId=25®dt=20120116225316#ajax_history_home</link:url>\n\n&lt;함수&gt;\nn = int(3) &lt;-- 숫자로 캐스팅 방법\n\n전역에서 선언된 변수는 지역함수에서 호출은 되나, 저장은 되지 않는다.\n\n함수들\n\t<link:url>http://linguistics.egloos.com/m/2020849</link:url>\n\t<link:url>http://mclee.tistory.com/331</link:url>\n폴더생성\n\t<link:url>http://desk.stinkpot.org:8080/tricks/index.php/2006/07/create-a-directory-in-python/</link:url>\n\n\n&lt; 모듈&gt;\n\t<link:url>http://docs.python.org/2/library/os.path.html</link:url>\n\n날짜와 달력관련 모듈들\n\t<link:url>http://codejob.co.kr/docs/page/61/</link:url>\n\t<link:url>http://devanix.tistory.com/306</link:url>\n\n웹페이지 가져오기\n\t<link:url>http://coreapython.hosting.paran.com/etc/Python%20and%20HTML%20Processing.htm</link:url>\n\n웹크리핑\n\t<link:url>http://yjparkep.tistory.com/entry/Python%EC%9B%B9-%ED%81%B4%EB%A6%AC%ED%95%91-%EB%B9%84%EC%8A%B7%ED%95%9C-%EA%B8%B0%EB%8A%A5?viewbar</link:url>\n\nhtml제거\n\t<link:url>http://codejob.co.kr/code/view/69/</link:url>\n\n팝업이 필요할때\n\t<link:url>http://stackoverflow.com/questions/2963263/how-can-i-create-a-simple-message-box-in-python</link:url>\n\n인터렉티브 쉘 만들기interective shell\n\t<link:url>https://pymotw.com/2/cmd/</link:url>\n\n요일 출력: calendar.weekday(2001, 4, 28) \n3일전: datetime.datetime.now() - datetime.timedelta(days=3)\n\n파일복사\nshutil.copy (filename1, filename2)\n\n\n&lt;사칙연산&gt;\n\n\t<link:url>http://kkoseul.tistory.com/148</link:url>  사칙연산 계산기 만들기 (GUI)\n\ts<strikethrough>ww</strikethrough> += 1\n\n\t소수점을 만들때는 float(), 정수형을 만들때는 int()\n\n&lt;딕셔너리&gt;\n\n<link:url>http://www.flowdas.com/thinkpython/11-dictionaries/</link:url>\neng2sp = {'one': 'uno', 'two': 'dos', 'three'<link:url>http://snowple.tistory.com/271:</link:url> 'tres'}\n딕셔너리를 for f in eng2sp: 한 다음 프린트 하면 거꾸로 출력된다. three, two, one * 리스트는 순서대로 출력됨\n\nimport를 통한 라이브러리 호출에서 리스트는 호출이 안된다. 딕셔너리는 호출이 된다.\n\n\n\n&lt;가변인수&gt;\n<link:url>http://jjunsit.blogspot.kr/2010/03/pytho.html</link:url>\ndef func(a, b, *params):\n\tprint a, b\n\tprint params\n\n# 가변 인수 키워드 <link:internal>테스트</link:internal> 키워드의 경우 dictionary로 표현되고\n\n# *params가 아니고 **params로 표현된다. 주의!\ndef func1(a, b, **params): # 딕??\n\tprint a, b\n\tprint params\n\n&lt;람다함수&gt;\n람다함수는 이름이 없는 한 줄짜리 함수...\n&gt;&gt;&gt; g = lambda x, y : x + y\n\n&lt;가변인수??&gt;\ndef func(a, b, *params):\n\t\tprint a, b\n\t\tprint params\n\n\tfunc(1, 2, 3,4)\n\nfor i in range(1, 66):\n\tbook = <link:internal>books</link:internal>_number[i]\n\tprint book\n\nrange와 xragne의 차이\n<link:url>http://ask.python.kr/question/58045/range%EC%99%80-xrange%EC%9D%98-%EB%B9%84%EA%B5%90/</link:url>\n: 큰 규모는 xrange로(메모리가 떠다니지 않게 해줌), 작은 규모의 리스트는 range가 더 효율...!\n\n&lt;파이썬 숙련자가 알아야 할 것들&gt; // 가변인수, 람다...\n<link:url>http://monetary.egloos.com/viewer/3882125</link:url>\n\n&lt;가변인자&gt; :: 맨 뒤에서 몇개가 올 지 모르는 인자를 받는 법\n<link:url>http://blog.eairship.kr/283</link:url>\n\n<link:internal>파이썬딕셔너리성경이름</link:internal>\n\nself 제대로 알기\n<link:url>https://wikidocs.net/28</link:url>\n\nfor number in range(1, 151)\n<list><list-item dir=\"ltr\">is 와 == 는 다르다!!</list-item></list>\n\n\nlogin\nuser_<link:internal>id</link:internal> = 'user_<link:internal>id</link:internal>'\npwd_<link:internal>id</link:internal> = 'password'\n<list><list-item><list><list-item dir=\"ltr\">login_url = '<link:url>http://www.slrclub.com/login/process.php'</link:url></list-item></list></list-item></list>\nWeb.login(user_<link:internal>id</link:internal>, pwd_<link:internal>id</link:internal>, username, password, login_url)\n\ntext = (tag.text or '') # 함수에서 None 이나 False 가 나오면, 다른 정의를 하게 할 수 있다.\n\nreturn과 yield: 함수에서 리턴 후 종료하나, yield은 값을 내놓은 이후에도 종료하지 않는다. 즉, 함수가 새성자가 된다.</note-content></text>\n  <last-change-date>2017-08-29T22:00:47.9130370+09:00</last-change-date>\n  <last-metadata-change-date>2017-08-29T22:00:49.6659100+09:00</last-metadata-change-date>\n  <create-date>2012-08-11T00:18:46.2137310+09:00</create-date>\n  <cursor-position>594</cursor-position>\n  <selection-bound-position>594</selection-bound-position>\n  <width>915</width>\n  <height>880</height>\n  <x>503</x>\n  <y>100</y>\n  <tags>\n    <tag>system:notebook:Note</tag>\n  </tags>\n  <open-on-startup>False</open-on-startup>\n</note>",
+			"file": "/backup/sungyo/tomboy/2d6c7e28-23ff-431f-b169-ab38f5677e04.note",
+			"file_size": 11759,
+			"file_write_time": 131630851042536257,
+			"settings":
+			{
+				"buffer_size": 10236,
+				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
 			}
 		},
@@ -547,15 +562,21 @@
 			"file": "src/hanibaram/note.py",
 			"settings":
 			{
-				"buffer_size": 1672,
+				"buffer_size": 2899,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 392.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -603,7 +624,16 @@
 	},
 	"console":
 	{
-		"height": 428.0
+		"height": 428.0,
+		"history":
+		[
+			"dir(sublime)",
+			"dir()",
+			"dir",
+			"dif",
+			"ls",
+			"니"
+		]
 	},
 	"distraction_free":
 	{
@@ -614,6 +644,10 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/home/sungyo/Unison/Application/Hanibaram"
+	],
 	"file_history":
 	[
 		"/backup/sungyo/tomboy/c061b8ab-4a72-4286-aa48-e1c1cbea49d0.note",
@@ -747,7 +781,7 @@
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 90.0
 	},
 	"find_in_files":
 	{
@@ -860,9 +894,9 @@
 			"QtGui.",
 			"text",
 			"bold",
-			"	window",
+			"\twindow",
 			"window",
-			"	app",
+			"\tapp",
 			"app",
 			"menuBar",
 			"setupFileMenu",
@@ -1041,17 +1075,18 @@
 				{
 					"buffer": 0,
 					"file": "src/hanibaram/hanibaram.py",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9327,
+						"buffer_size": 7262,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								131,
-								131
+								6173,
+								6173
 							]
 						],
 						"settings":
@@ -1061,25 +1096,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 5445.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
 					"file": "hanibaram",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2445,
+						"buffer_size": 2604,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1082,
-								1082
+								2593,
+								2593
 							]
 						],
 						"settings":
@@ -1088,25 +1125,55 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 290.0,
+						"translation.y": 1816.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/backup/sungyo/tomboy/2d6c7e28-23ff-431f-b169-ab38f5677e04.note",
+					"file": "notes/test2.note",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10162,
+						"buffer_size": 8113,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3270,
-								3270
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/backup/sungyo/tomboy/2d6c7e28-23ff-431f-b169-ab38f5677e04.note",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10236,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2265,
+								2191
 							]
 						],
 						"settings":
@@ -1114,17 +1181,19 @@
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 989.0,
+						"translation.y": 569.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "src/hanibaram/note.py",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1672,
+						"buffer_size": 2899,
 						"regions":
 						{
 						},
@@ -1145,6 +1214,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1152,7 +1222,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 44.0
+		"height": 48.0
 	},
 	"input":
 	{
@@ -1185,14 +1255,21 @@
 	{
 		"height": 193.0
 	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "hanibaram.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 87.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1201,15 +1278,32 @@
 	"select_project":
 	{
 		"height": 500.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 161.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 674.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 50.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

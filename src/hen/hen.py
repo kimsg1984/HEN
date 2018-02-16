@@ -33,7 +33,7 @@ from PyQt4.QtCore import *
 
 try:
 	from highlighter import Highlighter
-	from note import Note
+	from egg import Egg
 	from reference import event_type
 	from reference import font_size
 	from reference import key_type
@@ -45,9 +45,9 @@ except ImportError, err:
 
 def keyCode(code): return key_type[code] if key_type.has_key(code) else code
 
-class NoteEditor(QDialog):
+class EggEditor(QDialog):
 	def __init__(self, parent=None):
-		super(NoteEditor, self).__init__(parent)
+		super(EggEditor, self).__init__(parent)
 		# self.editor = TextEdit()
 		self.editor = TextEdit()
 		self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -69,7 +69,7 @@ class NoteEditor(QDialog):
 		self.is_editing_title = False
 		self.__defineInstance()
 		self.__setShortCut()
-		self.note = Note()
+		self.note = Egg()
 
 	def __defineInstance(self):
 		self.color_white = '#ffffff'
@@ -108,7 +108,6 @@ class NoteEditor(QDialog):
 		editMenu.addSeparator()
 		editMenu.addAction("Indent", 		self.textIndent, 		"Alt+Right")
 		editMenu.addAction("Dedent", 		self.textDedent, 		"Alt+Left")
-		editMenu.addAction("Number/Bullet", 	self.textNumOrBullet, "Alt+N")
 
 	def setNote(self, note):
 		self.note = note
@@ -209,22 +208,6 @@ class NoteEditor(QDialog):
 				c.movePosition(direction)
 		else:
 			dedentLine(c)
-
-	def textNumOrBullet(self):
-		if self.isTitle(): return
-
-		def bulletOrNumber():
-			if self.editor.isBulletIndent(c):
-				self.editor.giveList(c, list_style = self.editor.LIST_STYLE_NUMBER)
-			else:
-				self.editor.giveList(c, list_style = self.editor.LIST_STYLE_BULLET)
-
-		c = self.editor.textCursor()
-
-		if c.hasSelection():
-			temp = c.blockNumber()
-		else:
-			bulletOrNumber()
 
 	## Mouse Event Set ##
 
