@@ -2,7 +2,7 @@ font_size = {
 	'Small': 9, 
 	'Normal': 11, 
 	'Large': 15, 
-	'XLarge': 20, 
+	'Huge': 20,
 }
 
 event_type = {

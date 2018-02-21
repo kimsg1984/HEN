@@ -9,7 +9,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-#
+# 
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -28,9 +28,6 @@ sys.setdefaultencoding('utf-8')
 
 # 인자값을 먼저 받고, 로그 설정을 한 뒤에 임폴트를 하자
 
-# print(os.path.dirname(os.path.abspath(__file__)))
-# exit()
-
 if os.path.isdir(os.path.join(".","src")) and os.path.isfile(os.path.join(".","setup.py")):
 	sys.path.append(os.path.realpath("src"))
 
@@ -38,15 +35,16 @@ if os.path.isdir(os.path.join(".","src")) and os.path.isfile(os.path.join(".","s
 notes_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'notes')
 
 class Main():
-	def __init__(self, argv):		
+	def __init__(self, argv):
 		## Parser Setting ##
-		argv.append('-d')
-		usage = u"Usage: %prog [options]"
+		usage = u"Usage: %pㄷrog [options]"
 		parser = __import__('optparse').OptionParser(usage)
 
 		## Parser Option ##	
 		parser.add_option('-d', '--debug', dest='debug', action='store_true', help=u'debugging mode')
-		
+		parser.add_option('-c', '--console', dest='console', action='store_true', help=u'concole mode')
+
+
 		## command logic  ##
 		(opt, argv) = parser.parse_args(argv)
 		if opt.debug:
@@ -62,6 +60,7 @@ class Main():
 		except ImportError, err:
 			log.warning("Error: %s%s" % (str(err), os.linesep))
 			sys.exit(1)
+
 		try:
 			from hen.hen import EggEditor
 			from hen.egg import Egg
@@ -72,10 +71,26 @@ class Main():
 		self.app = QApplication(argv)
 		self.editor = EggEditor()
 		self.app.installEventFilter(self.editor)
-		self.editor.show()
+
 		note = Egg()
-		note.setFile(os.path.join(notes_dir, 'test2.note'))
+		# note.setFile(os.path.join(notes_dir, 'test2.note'))
+		note.setFile(os.path.join(notes_dir, 'test3.note'))
 		self.editor.setNote(note)
+		e = self.editor.editor
+
+		if opt.console:
+			from IPython import embed
+			embed()
+			sys.exit()
+		else:
+			self.editor.show()
+
+		# self.editor2 = EggEditor()
+		# self.app.installEventFilter(self.editor2)
+		# self.editor2.show()
+		# note2 = Egg()
+		# note2.setFile(os.path.join(notes_dir, 'test2_3.note'))
+		# self.editor2.setNote(note2)
 
 	def exec_(self):
 		try:

@@ -145,20 +145,16 @@ class TextEdit(QTextEdit):
 			format = QTextBlockFormat()
 			format.setIndent(0)
 			c.setBlockFormat(format)
+
 	def typingHandler(self, event_type = None):
 		def setTitle():
-			# c = self.textCursor()
+			c = self.textCursor()
 			c.movePosition(c.Start)
 			c.select(QTextCursor.LineUnderCursor)
 			selected_text = c.selectedText()
-			format = c.charFormat()
-			format.setFontPointSize(20)
-			format.setForeground(Qt.blue)
-			format.setFontUnderline(True)
-			c.setCharFormat(format)
 			if selected_text != selected_text.trimmed():
 				c.insertText(selected_text.trimmed())
-		# log.debug('')
+
 		def wiki_rule():
 			pass
 

@@ -10,6 +10,14 @@
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
+
+def generateFormat(color=None, size=None, underline=False):
+	keywordFormat = QTextCharFormat()
+	if color : keywordFormat.setForeground(color) # QT.$color
+	if size 	: keywordFormat.setFontPointSize(size)
+	if underline: keywordFormat.setFontUnderline(True)
+	return keywordFormat
+
 class MainWindow(QMainWindow):
 	def __init__(self, parent=None):
 		super(MainWindow, self).__init__(parent)
@@ -33,33 +41,28 @@ class Highlighter(QSyntaxHighlighter):
 	def __init__(self, parent=None):
 		super(Highlighter, self).__init__(parent)
 
-		self.keywordFormat = QTextCharFormat()
-		self.keywordFormat.setForeground(Qt.blue)
-		self.keywordFormat.setFontUnderline(True)
+		self.keywordFormat = generateFormat(color = Qt.blue, underline = True)
 		self.keywordFormat.setAnchor(True)
-		self.keywordFormat.setAnchorHref(QString('https://google.com'))
 
-		# keywordFormat.setAnchorNames(QStringList('class'))
 		self.highlightingRules = []
 
 	def addKeyword(self, keyword):
 		self.highlightingRules.append((QRegExp("\\b%s\\b" %keyword, Qt.CaseInsensitive), self.keywordFormat))
-		# self.highlightingRules.append((QRegExp("\\b%s\\b" %keyword), self.keywordFormat))
 
 	def highlightBlock(self, text):
-		print_dir = dir(self); print_dir.sort();print('dir: self'); print(',\n'.join(print_dir)); del print_dir
-		print(self.parent().toHtml())
+		if self.currentBlock().blockNumber() == 0: #title
+			self.setFormat(0, len(text), generateFormat(color = Qt.blue, size = 20, underline = True))
 
-		for pattern, format in self.highlightingRules:
-			expression = QRegExp(pattern)
-			index = expression.indexIn(text)
-			while index >= 0:
-				length = expression.matchedLength()
-				self.setFormat(index, length, format)
-				index = expression.indexIn(text, index + length)
-		self.setCurrentBlockState(0)
-
-		startIndex = 0
+		else:
+			for pattern, format in self.highlightingRules:
+				expression = QRegExp(pattern)
+				index = expression.indexIn(text)
+				while index >= 0:
+					length = expression.matchedLength()
+					self.setFormat(index, length, format)
+					index = expression.indexIn(text, index + length)
+			self.setCurrentBlockState(0)
+		# startIndex = 0
 
 class Main():
 	def __init__(self):

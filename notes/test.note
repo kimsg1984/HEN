@@ -1,1 +1,57 @@
-<html><head><meta name="qrichtext" content="1" /><style type="text/css"><br />p, li { white-space: pre-wrap; }<br /></style></head><body style=" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;"><br /><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;">class</p><br /><p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"><br /></p><br /><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"><span style=" font-weight:600;">		굵게</span></p><br /><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"><span style=" font-style:italic;">기울임</span></p><br /><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"><span style=" text-decoration: line-through;">취소선</span></p><br /><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"><span style=" background-color:#ffff00;">강조</span></p><br /><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"><span style=" text-decoration: underline;">밑줄</span></p><br /><p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"><br /></p><br /><p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:0;"><br /></p></body></html>
+<?xml version="1.0" encoding="utf-8"?>
+<note version="0.3" xmlns:link="http://beatniksoftware.com/tomboy/link" xmlns:size="http://beatniksoftware.com/tomboy/size" xmlns="http://beatniksoftware.com/tomboy">
+<title>test</title>
+<text xml:space="preserve"><note-content version="0.1">test
+
+<link:internal>Tomboy</link:internal>
+<link:url>http://google.com</link:url>
+
+<bold><italic><highlight><link:internal>python</link:internal></highlight></italic></bold>
+
+<link:internal>테스트1</link:internal>  &lt;--링크를 눌러보세요
+
+<bold>굵게</bold>한다고
+<italic>기울임</italic>
+<strikethrough>취소선</strikethrough>
+<highlight>강조</highlight> <highlight>한다고</highlight> 해서
+<monospace>고정폭</monospace>
+<size:small>작게</size:small>
+보통
+<size:large>크게</size:large>
+<size:huge>아주크게</size:huge>
+<list><list-item dir="ltr">목록표시
+<list><list-item dir="ltr"><bold><italic><strikethrough>굴게,기울임,취소선,목록된다고 표시</strikethrough></italic></bold>
+<list><list-item dir="ltr">더 깊게 깊게</list-item></list></list-item></list></list-item></list>
+
+
+<bold><italic><link:broken>리눅스 굵게 기울여서</link:broken></italic></bold>
+
+<link:url>http://192.168.0.202/tomboy/dylink.php?title=test</link:url>
+
+대신에 검색 정규식을 얻었다. \b(.+)\b
+
+
+<link:internal>bash</link:internal>
+
+<list><list-item dir="ltr">김대승
+<list><list-item dir="ltr">대승, 큰스님
+<list><list-item dir="ltr">소승은...</list-item></list></list-item></list></list-item></list>
+
+
+
+</note-content></text>
+  <last-change-date>2017-08-25T22:15:03.5082780+09:00</last-change-date>
+  <last-metadata-change-date>2017-08-25T22:15:03.5082780+09:00</last-metadata-change-date>
+  <create-date>2012-08-10T16:53:03.0970000+09:00</create-date>
+  <cursor-position>275</cursor-position>
+  <selection-bound-position>275</selection-bound-position>
+  <width>807</width>
+  <height>880</height>
+  <x>0</x>
+  <y>100</y>
+  <tags>
+    <tag>system:template:save-selection</tag>
+    <tag>system:notebook:Note</tag>
+  </tags>
+  <open-on-startup>False</open-on-startup>
+</note>

@@ -48,7 +48,6 @@ def keyCode(code): return key_type[code] if key_type.has_key(code) else code
 class EggEditor(QDialog):
 	def __init__(self, parent=None):
 		super(EggEditor, self).__init__(parent)
-		# self.editor = TextEdit()
 		self.editor = TextEdit()
 		self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 		self.editor.setAcceptRichText(False)
@@ -61,8 +60,9 @@ class EggEditor(QDialog):
 		self.setupMenu()
 		self.setLayout(layout)
 
-		# self.highlight = Highlighter(self.editor.document())
+		self.highlight = Highlighter(self.editor.document())
 		# self.highlight.addKeyword('class')
+		self.highlight.addKeyword('test')
 
 		self.resize(700, 700)
 		self.mouse_under_text = ''
@@ -95,7 +95,7 @@ class EggEditor(QDialog):
 		# self.menuBar.addMenu(styleMenu)
 		# self.menuBar.addMenu(sizeMenu)
 		# self.menuBar.addMenu(indentMenu)
-		editMenu.addAction("&Bord", 		self.textBold, 			"Ctrl+B")
+		editMenu.addAction("&Bold", 		self.textBold, 			"Ctrl+B")
 		editMenu.addAction("&Italic", 		self.textItalic, 		"Ctrl+I")
 		editMenu.addAction("&Highlight", 	self.textHighlight, 	"Ctrl+H")
 		editMenu.addAction("&Strikethrough", self.textStrikethrough, "Ctrl+T")
@@ -104,7 +104,7 @@ class EggEditor(QDialog):
 		editMenu.addAction("S&mall", 		self.textSizeSmall, 	"Ctrl+1")
 		editMenu.addAction("&Normal", 		self.textSizeNormal, 	"Ctrl+2")
 		editMenu.addAction("&Large", 		self.textSizeLarge, 	"Ctrl+3")
-		editMenu.addAction("&X-Large", 		self.textSizeXLarge, 	"Ctrl+4")
+		editMenu.addAction("&Huge", 		self.textSizeHuge, 		"Ctrl+4")
 		editMenu.addSeparator()
 		editMenu.addAction("Indent", 		self.textIndent, 		"Alt+Right")
 		editMenu.addAction("Dedent", 		self.textDedent, 		"Alt+Left")
@@ -166,9 +166,9 @@ class EggEditor(QDialog):
 	def textSizeLarge(self):
 		if self.isTitle(): return
 		self.editor.setFontPointSize(font_size['Large'])
-	def textSizeXLarge(self):
+	def textSizeHuge(self):
 		if self.isTitle(): return
-		self.editor.setFontPointSize(font_size['XLarge'])
+		self.editor.setFontPointSize(font_size['Huge'])
 
 	def textIndent(self):
 		if self.isTitle(): return
