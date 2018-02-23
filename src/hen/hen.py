@@ -243,29 +243,6 @@ class EggEditor(QDialog):
 				in_height = word_position[2] - allow_point <= mouse_pos.y() <= word_position[3] + allow_point
 				print(in_wide, in_height)
 
-				if len(text) > 1:
-
-					if self.mouse_under_text == text:
-						pass
-
-					else:
-						sentence = 'selectedText: %s' %text
-						sentence = sentence.encode('utf-8')
-						self.mouse_under_text = text
-
-						if virtual_cursor.charFormat().isAnchor():
-							log.info(virtual_cursor.charFormat().anchorHref())
-							self.editor.viewport().setCursor(QCursor(Qt.PointingHandCursor))
-						else:
-							# pass
-							self.editor.viewport().setCursor(QCursor(Qt.IBeamCursor))
-						# if cursor_rect.x() + 8 > mouse_pos.x():
-						# 	self.editor.viewport().setCursor(QCursor(Qt.PointingHandCursor))
-						# else:
-						# 	self.editor.viewport().setCursor(QCursor(Qt.IBeamCursor))
-
-				else:
-					self.mouse_under_text =''
-					pass # do other stuff
+				
 
 		return self.editor.eventFilter(self, event)
