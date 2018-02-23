@@ -219,26 +219,51 @@ class EggEditor(QDialog):
 	def eventFilter(self, source, event):
 		c = self.editor.textCursor()
 		if event.type() == QEvent.MouseMove:
+			mouse_pos = event.pos()
 			if event.buttons() == Qt.NoButton:
-				pos = event.pos()
-				# print(pos)
-				virtual_cursor =  self.editor.cursorForPosition(event.pos()) # 설렉션 잡을 때 마다 생성해줘야 함.
+				virtual_cursor =  self.editor.cursorForPosition(mouse_pos) # 설렉션 잡을 때 마다 생성해줘야 함.
+
+				virtual_cursor_move =  self.editor.cursorForPosition(mouse_pos)
+				virtual_cursor_move.movePosition(virtual_cursor.StartOfWord)
+				cursor_rect_start = self.editor.cursorRect(virtual_cursor_move)
+				virtual_cursor_move.movePosition(virtual_cursor.EndOfWord)
+				cursor_rect_end = self.editor.cursorRect(virtual_cursor_move)
+
+				word_position = (cursor_rect_start.x(), cursor_rect_end.x(),
+								 cursor_rect_start.top(), cursor_rect_start.top() + cursor_rect_start.height())
+				allow_point = 4
+
+				# print(word_position, mouse_pos)
+
 				virtual_cursor.select(QTextCursor.WordUnderCursor)
+
 				self.virtual_cursor = virtual_cursor
 				text = virtual_cursor.selectedText()
+				in_wide = word_position[0] - allow_point <= mouse_pos.x() <= word_position[1] + allow_point
+				in_height = word_position[2] - allow_point <= mouse_pos.y() <= word_position[3] + allow_point
+				print(in_wide, in_height)
+
 				if len(text) > 1:
-					if self.mouse_under_text != text:
+
+					if self.mouse_under_text == text:
+						pass
+
+					else:
 						sentence = 'selectedText: %s' %text
 						sentence = sentence.encode('utf-8')
-						print('%s' %(sentence))
 						self.mouse_under_text = text
+
 						if virtual_cursor.charFormat().isAnchor():
-							print(virtual_cursor.charFormat().anchorHref())
+							log.info(virtual_cursor.charFormat().anchorHref())
 							self.editor.viewport().setCursor(QCursor(Qt.PointingHandCursor))
 						else:
+							# pass
 							self.editor.viewport().setCursor(QCursor(Qt.IBeamCursor))
-					else:
-						self.editor.viewport().setCursor(QCursor(Qt.IBeamCursor))
+						# if cursor_rect.x() + 8 > mouse_pos.x():
+						# 	self.editor.viewport().setCursor(QCursor(Qt.PointingHandCursor))
+						# else:
+						# 	self.editor.viewport().setCursor(QCursor(Qt.IBeamCursor))
+
 				else:
 					self.mouse_under_text =''
 					pass # do other stuff

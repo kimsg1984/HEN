@@ -78,9 +78,15 @@ class Main():
 		self.editor.setNote(note)
 		e = self.editor
 		a = self.app
+		c = e.editor.textCursor()
+		c.movePosition(c.Down)
+		# c.insertHtml('<a href="https://google.com">https://google.com</a>')
 
 		if opt.console:
+			import PyQt4.QtGui
+			import PyQt4.QtCore
 			from IPython import embed
+
 			embed()
 			sys.exit()
 		else:
