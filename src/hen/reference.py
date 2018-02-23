@@ -1,9 +1,16 @@
 font_size = {
-	'Small': 9, 
-	'Normal': 11, 
-	'Large': 15, 
-	'Huge': 20,
+	'Small'		: 9,
+	'Normal'	: 11,
+	'Large'		: 15,
+	'Huge'		: 20,
 }
+
+color ={
+	'white'		: '#ffffff',
+	'highlight'	: '#ffff00',
+}
+
+
 
 event_type = {
 	0:'Event.None',

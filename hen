@@ -37,7 +37,7 @@ notes_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'notes')
 class Main():
 	def __init__(self, argv):
 		## Parser Setting ##
-		usage = u"Usage: %pㄷrog [options]"
+		usage = u"Usage: %prog [options]"
 		parser = __import__('optparse').OptionParser(usage)
 
 		## Parser Option ##	
@@ -76,7 +76,8 @@ class Main():
 		# note.setFile(os.path.join(notes_dir, 'test2.note'))
 		note.setFile(os.path.join(notes_dir, 'test3.note'))
 		self.editor.setNote(note)
-		e = self.editor.editor
+		e = self.editor
+		a = self.app
 
 		if opt.console:
 			from IPython import embed

@@ -187,7 +187,7 @@ class TextEdit(QTextEdit):
 			if current_format.fontWeight() != right_format.fontWeight():
 				current_format.setFontWeight(QFont.Normal)
 
-			# italac
+			# italic
 			if current_format.fontItalic() != right_format.fontItalic():
 				current_format.setFontItalic(False)
 

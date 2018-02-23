@@ -28,20 +28,23 @@ sys.setdefaultencoding('utf-8')
 
 log = logging.getLogger(__name__)
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt4.QtGui 		import *
+from PyQt4.QtCore 		import *
 
 try:
-	from highlighter import Highlighter
-	from egg import Egg
-	from reference import event_type
-	from reference import font_size
-	from reference import key_type
-	from qtextedit import TextEdit
+	from highlighter 	import Highlighter
+	from egg 			import Egg
+	from qtextedit 		import TextEdit
+	import reference
 
 except ImportError, err:
 	log.warning("Error: %s%s" % (str(err), os.linesep))
 	sys.exit(1)
+
+event_type 	= reference.event_type
+font_size 	= reference.font_size
+key_type 	= reference.key_type
+color 		= reference.color
 
 def keyCode(code): return key_type[code] if key_type.has_key(code) else code
 
@@ -59,10 +62,7 @@ class EggEditor(QDialog):
 		layout.setMenuBar(self.menuBar)
 		self.setupMenu()
 		self.setLayout(layout)
-
-		self.highlight = Highlighter(self.editor.document())
-		# self.highlight.addKeyword('class')
-		self.highlight.addKeyword('test')
+		self.__setHighlight()
 
 		self.resize(700, 700)
 		self.mouse_under_text = ''
@@ -71,9 +71,14 @@ class EggEditor(QDialog):
 		self.__setShortCut()
 		self.note = Egg()
 
+	def __setHighlight(self):
+	 self.highlight = Highlighter(self.editor.document())
+	 self.highlight.addKeyword('class')
+	 self.highlight.addKeyword('test for')
+
 	def __defineInstance(self):
-		self.color_white = '#ffffff'
-		self.color_highlight = '#ffff00'
+		self.color_white = color['white']
+		self.color_highlight = color['highlight']
 
 	def __setShortCut(self):
 		pass
@@ -225,7 +230,7 @@ class EggEditor(QDialog):
 					if self.mouse_under_text != text:
 						sentence = 'selectedText: %s' %text
 						sentence = sentence.encode('utf-8')
-						# print('%s' %(sentence))
+						print('%s' %(sentence))
 						self.mouse_under_text = text
 						if virtual_cursor.charFormat().isAnchor():
 							print(virtual_cursor.charFormat().anchorHref())

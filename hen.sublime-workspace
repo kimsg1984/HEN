@@ -541,7 +541,7 @@
 			"file": "src/hen/HtmlToNotefile.py",
 			"settings":
 			{
-				"buffer_size": 6898,
+				"buffer_size": 6916,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -554,7 +554,6 @@
 			"settings":
 			{
 				"buffer_size": 8271,
-				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -562,7 +561,7 @@
 			"file": "notes/test3.note",
 			"settings":
 			{
-				"buffer_size": 8271,
+				"buffer_size": 10186,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -867,8 +866,8 @@
 						"selection":
 						[
 							[
-								1871,
-								1871
+								515,
+								515
 							]
 						],
 						"settings":
@@ -877,7 +876,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1043.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -918,15 +917,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6898,
+						"buffer_size": 6916,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								269,
-								269
+								0,
+								0
 							]
 						],
 						"settings":
@@ -975,15 +974,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8271,
+						"buffer_size": 10186,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8271,
-								8271
+								0,
+								0
 							]
 						],
 						"settings":
