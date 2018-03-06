@@ -1,4 +1,4 @@
-## westwind ##
+## HEN ##
 
-Python port of Wiki-Wiki texteditor.
+Python Port of Wiki-Wiki TextEditor.
 

@@ -6,6 +6,7 @@
 # irc.freenode #ubuntu-ko Sungyo
 import time
 import shelve
+import re
 
 def to_unicode(obj, encoding='utf-8'):
 	if isinstance(obj, basestring):
@@ -26,7 +27,14 @@ def chec_time(func, argumenet = None):
 	else:
 		instance = func()
 	end = time.time()
-	pnt('time: {}'.format((end - start)))
+	result_time = end - start
+	result_time = str(result_time)
+	# if result_time[-4:-3] == 'e':
+	# 	square_value = int(result_time[-2:])
+	# 	square = round(0.1 ** square_value, square_value)
+	# 	result_time = round(float(result_time[5:]), 5) * square
+
+	pnt('time: {}'.format(result_time))
 	return instance
 
 class Shelve():

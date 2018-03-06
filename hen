@@ -86,7 +86,7 @@ class Main():
 			import PyQt4.QtGui
 			import PyQt4.QtCore
 			from IPython import embed
-
+			self.editor.show()
 			embed()
 			sys.exit()
 		else:

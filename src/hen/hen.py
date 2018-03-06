@@ -32,10 +32,10 @@ from PyQt4.QtGui 		import *
 from PyQt4.QtCore 		import *
 
 try:
-	from highlighter 	import Highlighter
 	from egg 			import Egg
 	from qtextedit 		import TextEdit
 	import reference
+	import IO
 
 except ImportError, err:
 	log.warning("Error: %s%s" % (str(err), os.linesep))
@@ -53,7 +53,6 @@ class EggEditor(QDialog):
 		super(EggEditor, self).__init__(parent)
 		self.editor = TextEdit()
 		self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-		self.editor.setAcceptRichText(False)
 		# self.editor.setTextInteractionFlags(Qt.LinksAccessibleByMouse) # 링크로 접속 허용??
 		layout = QVBoxLayout() # appear virtically
 		layout.setMargin(0)
@@ -62,23 +61,18 @@ class EggEditor(QDialog):
 		layout.setMenuBar(self.menuBar)
 		self.setupMenu()
 		self.setLayout(layout)
-		self.__setHighlight()
 
 		self.resize(700, 700)
-		self.mouse_under_text = ''
-		self.is_editing_title = False
-		self.__defineInstance()
+		self.__defineAttributes()
 		self.__setShortCut()
 		self.note = Egg()
 
-	def __setHighlight(self):
-	 self.highlight = Highlighter(self.editor.document())
-	 self.highlight.addKeyword('class')
-	 self.highlight.addKeyword('test for')
-
-	def __defineInstance(self):
+	def __defineAttributes(self):
 		self.color_white = color['white']
 		self.color_highlight = color['highlight']
+		self.mouse_under_text = ''
+		self.is_editing_title = False
+		self.highlight_information = self.editor.highlight.highlight_information
 
 	def __setShortCut(self):
 		pass
@@ -89,46 +83,57 @@ class EggEditor(QDialog):
 	def setupMenu(self):
 
 		fileMenu = QMenu("&File", self)
-		self.menuBar.addMenu(fileMenu)
-		fileMenu.addAction("&Save...", 		self.saveFile, 			"Ctrl+S")
-
 		editMenu = QMenu("&Edit", 	self)
 		styleMenu = QMenu("S&tyle", self)
-		sizeMenu = QMenu("&Size", self)
-		indentMenu = QMenu("&Indent", self)
-		self.menuBar.addMenu(editMenu)
-		# self.menuBar.addMenu(styleMenu)
+		# sizeMenu = QMenu("&Size", self)
+		# indentMenu = QMenu("&Indent", self)
+
+		self.menuBar.addMenu(fileMenu)
+		# self.menuBar.addMenu(editMenu)
+		self.menuBar.addMenu(styleMenu)
 		# self.menuBar.addMenu(sizeMenu)
 		# self.menuBar.addMenu(indentMenu)
-		editMenu.addAction("&Bold", 		self.textBold, 			"Ctrl+B")
-		editMenu.addAction("&Italic", 		self.textItalic, 		"Ctrl+I")
-		editMenu.addAction("&Highlight", 	self.textHighlight, 	"Ctrl+H")
-		editMenu.addAction("&Strikethrough", self.textStrikethrough, "Ctrl+T")
-		editMenu.addAction("&Underline", 	self.textUnderline, 	"Ctrl+U")
-		editMenu.addSeparator()
-		editMenu.addAction("S&mall", 		self.textSizeSmall, 	"Ctrl+1")
-		editMenu.addAction("&Normal", 		self.textSizeNormal, 	"Ctrl+2")
-		editMenu.addAction("&Large", 		self.textSizeLarge, 	"Ctrl+3")
-		editMenu.addAction("&Huge", 		self.textSizeHuge, 		"Ctrl+4")
-		editMenu.addSeparator()
-		editMenu.addAction("Indent", 		self.textIndent, 		"Alt+Right")
-		editMenu.addAction("Dedent", 		self.textDedent, 		"Alt+Left")
+		# fileMenu.addAction("&Save...", self.saveFile, "Ctrl+S")
+		# editMenu.addAction("&Copy", self.copy, "Ctrl+C")
+		# editMenu.addAction("Cu&t", self.cut, "Ctrl+X")
+		# editMenu.addAction("&Paste", self.paste, "Ctrl+V")
+
+		styleMenu.addAction("&Bold", self.textBold, "Ctrl+B")
+		styleMenu.addAction("&Italic", self.textItalic, "Ctrl+I")
+		styleMenu.addAction("&Highlight", self.textHighlight, "Ctrl+H")
+		styleMenu.addAction("&Strikethrough", self.textStrikethrough, "Ctrl+T")
+		styleMenu.addAction("&Underline", self.textUnderline, "Ctrl+U")
+		styleMenu.addSeparator()
+		styleMenu.addAction("(&0) Normal", self.textSizeNormal, "Ctrl+0")
+		styleMenu.addAction("(&1) Small", self.textSizeSmall, "Ctrl+1")
+		styleMenu.addAction("(&2) Large", self.textSizeLarge, "Ctrl+2")
+		styleMenu.addAction("(&3) Huge", self.textSizeHuge, "Ctrl+3")
+		styleMenu.addSeparator()
+		styleMenu.addAction("(&]) Indent", self.textIndent, "Alt+Right")
+		styleMenu.addAction("(&[) Dedent", self.textDedent, "Alt+Left")
 
 	def setNote(self, note):
 		self.note = note
 		html = note.html
 		self.editor.setHtml(html)
-		c = self.editor.textCursor()
-		# 타이틀이나 여는 시간등도 설정할 것.
+		# self.last_block_number = self.getLastBlockNumber()
+
 
 	## MenuBar Function ##
 	# File Menu #
+
+	def test(self):
+		log.debug('function for testing.')
+
 	def saveFile(self):
 		html = self.editor.toHtml()
 		self.note.setHtml(self.editor.toHtml())
 		self.note.saveFile()
 
 	# Edit Menu #
+
+
+	# Style Menu #
 	def textBold(self):
 		if self.isTitle(): return
 
@@ -214,35 +219,129 @@ class EggEditor(QDialog):
 		else:
 			dedentLine(c)
 
-	## Mouse Event Set ##
+	## Event Set ##
 
 	def eventFilter(self, source, event):
-		c = self.editor.textCursor()
-		if event.type() == QEvent.MouseMove:
-			mouse_pos = event.pos()
-			if event.buttons() == Qt.NoButton:
-				virtual_cursor =  self.editor.cursorForPosition(mouse_pos) # 설렉션 잡을 때 마다 생성해줘야 함.
+		if 		event.type() == QEvent.MouseMove: self._mouseEventFilter(event)
+		elif 	event.type() == QEvent.KeyRelease: self._keyReleaseEventFilter(event)
+		elif 	event.type() == QEvent.KeyPress: self._keyPressEventFilter(event)
 
-				virtual_cursor_move =  self.editor.cursorForPosition(mouse_pos)
-				virtual_cursor_move.movePosition(virtual_cursor.StartOfWord)
-				cursor_rect_start = self.editor.cursorRect(virtual_cursor_move)
-				virtual_cursor_move.movePosition(virtual_cursor.EndOfWord)
-				cursor_rect_end = self.editor.cursorRect(virtual_cursor_move)
+		return self.editor.eventFilter(source, event)
 
-				word_position = (cursor_rect_start.x(), cursor_rect_end.x(),
-								 cursor_rect_start.top(), cursor_rect_start.top() + cursor_rect_start.height())
-				allow_point = 4
+	def _mouseEventFilter(self, event):
+		""""""
+		def eventNoButton():
+			virtual_cursor = self.editor.cursorForPosition(mouse_pos)  # 설렉션 잡을 때 마다 생성해줘야 함.
 
-				# print(word_position, mouse_pos)
+			virtual_cursor_move = self.editor.cursorForPosition(mouse_pos)
+			virtual_cursor_move.movePosition(virtual_cursor.StartOfWord)
+			cursor_rect_start = self.editor.cursorRect(virtual_cursor_move)
+			virtual_cursor_move.movePosition(virtual_cursor.EndOfWord)
+			cursor_rect_end = self.editor.cursorRect(virtual_cursor_move)
 
-				virtual_cursor.select(QTextCursor.WordUnderCursor)
+			word_position = (cursor_rect_start.x(), cursor_rect_end.x(),
+							 cursor_rect_start.top(), cursor_rect_start.top() + cursor_rect_start.height())
+			allow_point = 8
 
-				self.virtual_cursor = virtual_cursor
-				text = virtual_cursor.selectedText()
-				in_wide = word_position[0] - allow_point <= mouse_pos.x() <= word_position[1] + allow_point
-				in_height = word_position[2] - allow_point <= mouse_pos.y() <= word_position[3] + allow_point
-				print(in_wide, in_height)
+			virtual_cursor.select(QTextCursor.WordUnderCursor)
 
-				
+			self.virtual_cursor = virtual_cursor
+			text = virtual_cursor.selectedText()
+			in_wide = word_position[0] - allow_point <= mouse_pos.x() <= word_position[1] + allow_point
+			in_height = word_position[2] - allow_point <= mouse_pos.y() <= word_position[3] + allow_point
 
-		return self.editor.eventFilter(self, event)
+			if in_wide and in_height:
+				if len(text) > 0:
+					if self.mouse_under_text == text:
+						if self.editor.viewport().cursor().shape() == 4 \
+								and virtual_cursor.charFormat().isAnchor():
+							self.editor.viewport().setCursor(QCursor(Qt.PointingHandCursor))
+					else:
+						sentence = 'selectedText: %s' % text
+						sentence = sentence.encode('utf-8')
+						self.mouse_under_text = text
+
+						if virtual_cursor.charFormat().isAnchor():
+							log.info(virtual_cursor.charFormat().anchorHref())
+							self.editor.viewport().setCursor(QCursor(Qt.PointingHandCursor))
+						else:
+							self.editor.viewport().setCursor(QCursor(Qt.IBeamCursor))
+				else:
+					self.mouse_under_text = ''
+					pass  # do other stuff
+			else:
+				self.editor.viewport().setCursor(QCursor(Qt.IBeamCursor))
+		def eventNoButton2():
+			def isPositionInLink():
+				if block_number in self.highlight_information:
+					highlight_info = self.highlight_information[block_number]
+					highlight_info.sort()
+					for info_list in highlight_info:
+						print(cursor_number_in_block, info_list)
+						if info_list[0] <= cursor_number_in_block:
+							if cursor_number_in_block <= info_list[1]:
+
+								return True
+						else: break
+				return False
+
+			virtual_cursor 		= self.editor.cursorForPosition(mouse_pos)  # 설렉션 잡을 때 마다 생성해줘야 함.
+			block_number 		= virtual_cursor.block().blockNumber()
+			cursor_number_in_block	= virtual_cursor.positionInBlock()
+			virtual_cursor_move = self.editor.cursorForPosition(mouse_pos)
+			virtual_cursor_move.movePosition(virtual_cursor.StartOfWord)
+			cursor_rect_start 	= self.editor.cursorRect(virtual_cursor_move)
+			virtual_cursor_move.movePosition(virtual_cursor.EndOfWord)
+			cursor_rect_end 	= self.editor.cursorRect(virtual_cursor_move)
+
+			word_position 		= (cursor_rect_start.x(), cursor_rect_end.x(),
+									cursor_rect_start.top(), cursor_rect_start.top() + cursor_rect_start.height())
+			allow_point 		= 8
+
+			virtual_cursor.select(QTextCursor.WordUnderCursor)
+
+			self.virtual_cursor = virtual_cursor
+			text 				= virtual_cursor.selectedText()
+			in_wide 			= word_position[0] - allow_point <= mouse_pos.x() <= word_position[1] + allow_point
+			in_height 			= word_position[2] - allow_point <= mouse_pos.y() <= word_position[3] + allow_point
+
+			if in_wide and in_height:
+				if len(text) > 0:
+					isPositionInLink()
+					if self.mouse_under_text == text:
+						# and virtual_cursor.charFormat().isAnchor():
+						if self.editor.viewport().cursor().shape() == Qt.IBeamCursor \
+								and isPositionInLink():
+							self.editor.viewport().setCursor(QCursor(Qt.PointingHandCursor))
+					else:
+						sentence = 'selectedText: %s' % text
+						sentence = sentence.encode('utf-8')
+						self.mouse_under_text = text
+
+						if virtual_cursor.charFormat().isAnchor():
+							log.info(virtual_cursor.charFormat().anchorHref())
+							self.editor.viewport().setCursor(QCursor(Qt.PointingHandCursor))
+						else:
+							self.editor.viewport().setCursor(QCursor(Qt.IBeamCursor))
+				else:
+					self.mouse_under_text = ''
+					pass  # do other stuff
+			else:
+				self.editor.viewport().setCursor(QCursor(Qt.IBeamCursor))
+
+		mouse_pos = event.pos()
+		if event.buttons() == Qt.NoButton:
+			# eventNoButton()
+			eventNoButton2()
+
+	def _keyReleaseEventFilter(self, event):
+		# print(key_type[event.key()])
+		pass
+
+	def _keyPressEventFilter(self, event):
+		"""
+	    """
+		# print(key_type[event.key()])
+		# print(self.editor.textCursor().blockNumber(),self.last_block_number)
+
+		# def adjust

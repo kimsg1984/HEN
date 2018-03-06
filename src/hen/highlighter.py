@@ -7,8 +7,11 @@
 
 """PyQt4 port of the richtext/syntaxhighlighter example from Qt v4.x"""
 
+import logging
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
+
+log = logging.getLogger(__name__)
 
 def generateFormat(color=None, size=None, underline=False):
 	keywordFormat = QTextCharFormat()
@@ -31,7 +34,12 @@ class Highlighter(QSyntaxHighlighter):
 		self.highlightingRules.append((QRegExp("\\b%s\\b" %keyword, Qt.CaseInsensitive), self.keywordFormat))
 
 	def highlightBlock(self, text):
-		highlight_information_list = []
+		def popHighlightInformation(block_number, info_list):
+			if block_number in self.highlight_information:
+				self.highlight_information[block_number].append(info_list)
+			else:
+				self.highlight_information[block_number] = [info_list]
+
 		block_number = self.currentBlock().blockNumber()
 		if block_number == 0: #title
 			self.setFormat(0, len(text), generateFormat(color = Qt.blue, size = 20, underline = True))
@@ -40,12 +48,12 @@ class Highlighter(QSyntaxHighlighter):
 			for pattern, format in self.highlightingRules:
 				expression = QRegExp(pattern)
 				index = expression.indexIn(text)
-				# print(index)
 				while index >= 0:
 					length = expression.matchedLength()
 					link_text = '{}'.format(text[index:index + length])
+					popHighlightInformation(block_number, [index, index + length, 'inter_link', link_text])
+					log.debug('{},{},{}'.format(block_number, index, length, link_text))
 					format.setAnchorHref(link_text)
 					self.setFormat(index, length, format)
 					index = expression.indexIn(text, index + length)
-			b = self.currentBlock()
 			self.setCurrentBlockState(0)

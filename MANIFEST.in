@@ -1,2 +1,2 @@
-include setup.py hanibaram AUTHORS README COPYING
+include setup.py hen AUTHORS README COPYING
 recursive-include src/ *.py *.ui

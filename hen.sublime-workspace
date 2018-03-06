@@ -523,26 +523,59 @@
 			"file": "hen",
 			"settings":
 			{
-				"buffer_size": 2971,
+				"buffer_size": 3172,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "notes/tag_analyzing.html",
-			"settings":
-			{
-				"buffer_size": 3629,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
+			"contents": "#!/usr/bin/env python\n# -*- coding: utf-8 -*-\n\n# Author: SunGyo Kim\n# Email: Kimsg1984@gmail.com\n# irc.freenode #ubuntu-ko Sungyo\n \nimport re\n\nimport MarkupAssembler\nimport reference\nfrom pprint import pprint\n\n# filename = 'test_basic.html'\nfilename = 'test_full.html'\n\n# should pull from 'scr/hen/reference.py' when imply\n\nfont_size = reference.font_size\n\n# {'li': {'style': set(['-qt-block-indent:0',\n#                       'margin-bottom:0px',\n#                       'margin-left:0px',\n#                       'margin-right:0px',\n#                       'margin-top:0px',\n#                       'text-indent:0px'])},\n#  'ol': {'style': set(['-qt-list-indent: 2',\n#                       '-qt-list-indent: 3',\n#                       '-qt-list-indent: 4',\n#                       'margin-bottom: 0px',\n#                       'margin-left: 0px',\n#                       'margin-right: 0px',\n#                       'margin-top: 0px']),\n#         'type': set(['A', 'a', 'i'])},\n#  'p': {'style': set(['-qt-block-indent:0',\n#                      '-qt-paragraph-type:empty',\n#                      'margin-bottom:0px',\n#                      'margin-left:0px',\n#                      'margin-right:0px',\n#                      'margin-top:0px',\n#                      'text-indent:0px'])},\n#  'span': {'style': set(['background-color:#ffff00',\n#                         'color:#0000ff',\n#                         'font-size:15pt',\n#                         'font-size:20pt',\n#                         'font-size:9pt',\n#                         'font-style:italic',\n#                         'font-weight:600',\n#                         'text-decoration: line-through',\n#                         'text-decoration: underline'])},\n#  'ul': {'style': set(['-qt-list-indent: 1',\n#                       '-qt-list-indent: 2',\n#                       '-qt-list-indent: 3',\n#                       '-qt-list-indent: 4',\n#                       '-qt-list-indent: 5',\n#                       '-qt-list-indent: 6',\n#                       '-qt-list-indent: 7',\n#                       '-qt-list-indent: 8',\n#                       'margin-bottom: 0px',\n#                       'margin-left: 0px',\n#                       'margin-right: 0px',\n#                       'margin-top: 0px']),\n#         'type': set(['circle', 'square'])}}\n\nclass HtmlToNoteFileFormat(MarkupAssembler.HtmlAssembler):\n\tdef __init__(self, html_string):\n\t\tself.markup_list = self.markupToList(html_string)\n\t\tself.short_tag = True\n\t\tself.with_declaration = False\n\t\tself.paragraph_tag = ['p'] # skip entity including attribute\n\t\tself.delete_list = ['head']\n\t\tself.strip_list_sensitive = ['p']\n\t\tself.strip_list_forced = ['html', 'body']\n\t\tself.attribute_gathering_dict = {}\n\t\tself.manage_attribute_first_function = True\n\n\t\tmargin_default = [\n\t\t\t'margin-bottom:0px', 'margin-left:0px', 'margin-right:0px', 'margin-top:0px',\n\t\t]\n\n\t\tself.attribute_set_default = {\n\t\t\t'p' : {'style' : margin_default + ['-qt-block-indent:0', 'text-indent:0px']},\n\t\t\t'ul': {'style' : margin_default},\n\t\t\t'li': {'style' : margin_default + ['-qt-block-indent:0','text-indent:0px']},\n\t\t\t'ol': {'style' : margin_default},\n\t\t\t}\n\n\t\tself.attribute_set_delete = { # should overload dict and list.\n\t\t\t'p' : {'style' : ['-qt-user-state:0', '-qt-paragraph-type:empty']},\n\t\t\t'ul' : ['type'],\n\t\t\t'ol' : ['type'],\n\t\t\t}\n\n\t\tself.attribute_set_correspondence = {\n\t\t\t# 'p' \t: \t{'style' : { '-qt-paragraph-type:empty': '' }}, ֒\n\t\t\t'span' \t:\t{'style' : {\n\t\t\t\t\t\t\t\t'font-size:{}pt'.format(font_size['Small']) : 'size:small',\n\t\t\t\t\t\t\t\t'font-size:{}pt'.format(font_size['Normal']): 'size:normal',\n\t\t\t\t\t\t\t\t'font-size:{}pt'.format(font_size['Large']) : 'size:large',\n\t\t\t\t\t\t\t\t'font-size:{}pt'.format(font_size['Huge']) \t: 'size:huge',\n\t\t\t\t\t\t\t\t'background-color:#ffff00' : 'highlight', 'font-weight:600' : 'bold',\n\t\t\t\t\t\t\t\t'text-decoration:line-through' : 'strikethrough',\n\t\t\t\t\t\t\t\t'text-decoration:underline' : 'underline', 'font-style:italic' : 'italic'}\n\t\t\t\t\t\t},\n\t\t\t'ul'\t: \t{'style' : {'-qt-list-indent' : 'indent'}},\n\t\t\t'ol'\t: \t{'style' : {'-qt-list-indent' : 'indent'}},\n\t\t}\n\n\tdef manageAttribute(self, tag, attribute_dict):\n\t\treturn self._attributeFactory(tag, attribute_dict)\n\n\tdef _attributeFactory(self, tag, attribute_dict):\n\n\t\tfor attribute_name in attribute_dict.keys():\n\t\t\tattribute_values = list(attribute_dict[attribute_name])\n\n\t\t\tif tag in self.attribute_set_default:\n\t\t\t\tif attribute_name in self.attribute_set_default[tag]:\n\t\t\t\t\tattribute_values = list(set(attribute_values) - set(self.attribute_set_default[tag][attribute_name]))\n\n\t\t\tif tag in self.attribute_set_delete:\n\t\t\t\tif attribute_name in self.attribute_set_delete[tag]:\n\t\t\t\t\tif type(self.attribute_set_delete[tag]) == dict:\n\t\t\t\t\t\tattribute_values = list(set(attribute_values) - set(self.attribute_set_delete[tag][attribute_name]))\n\t\t\t\t\telif type(self.attribute_set_delete[tag]) == list:\n\t\t\t\t\t\tattribute_values = []\n\n\t\t\tif tag in self.attribute_set_correspondence:\n\t\t\t\tif attribute_name in self.attribute_set_correspondence[tag]:\n\t\t\t\t\tcorrespondence_dict = self.attribute_set_correspondence[tag][attribute_name]\n\t\t\t\t\tfor correspondence in correspondence_dict:\n\t\t\t\t\t\tcorrespondence_value = correspondence_dict[correspondence]\n\t\t\t\t\t\tattribute_values_str = ';'.join(attribute_dict[attribute_name])\n\n\t\t\t\t\t\tif ':' in correspondence:\n\t\t\t\t\t\t\tif correspondence in attribute_values:\n\t\t\t\t\t\t\t\tattribute_values.remove(correspondence)\n\t\t\t\t\t\t\t\tattribute_values.append(correspondence_value)\n\t\t\t\t\t\telse:\n\t\t\t\t\t\t\tattribute_values_str = ';'.join(attribute_values)\n\t\t\t\t\t\t\tif len(re.findall(correspondence, attribute_values_str)) > 0:\n\t\t\t\t\t\t\t\tattribute_values_str = re.sub(correspondence, correspondence_value, attribute_values_str)\n\t\t\t\t\t\t\t\tattribute_values = attribute_values_str.split(';')\n\n\t\t\tattribute_dict[attribute_name] = attribute_values\n\n\t\tattribute_name_list = [attribute_name for attribute_name in attribute_dict]\n\t\tfor attribute_name in attribute_name_list:\n\t\t\tif len(attribute_dict[attribute_name]) == 0: del(attribute_dict[attribute_name])\n\n\t\treturn attribute_dict\n\n\tdef assembelOrderShortTag(self, tag, attribute):\n\t\tif tag is not 'br':\n\t\t\t# return '\\n'\n\t\t\treturn ''\n\t\telse:\n\t\t\treturn '\\n<{} />'.format((tag + ' ' + attribute).strip())\n\n\tdef assembleOrder(self, tag, attribute, content):\n\t\t\"\"\"\n\t\tFor overriding\n\t\t\t# default: return '\\n<{}>{}</{}>'.format((tag + ' ' + attribute).strip(), content, tag)\n\t\t\"\"\"\n\t\tresult = ''\n\n\t\tresult += '<{}>'.format((tag + ' ' + attribute).strip())\n\t\tif tag in ['ul', 'ol']: result += '\\n'\n\t\tresult += '{}'.format(content)\n\t\tresult += '</{}>'.format(tag)\n\n\t\tif tag in ['ul', 'li', 'ol']: result += '\\n'\n\t\treturn result\n\nclass Main():\n\tdef __init__(self):\n\t\tfile_content = open(filename).read()\n\t\tself.m = HtmlToNoteFileFormat(file_content)\n\t\tresult = self.m.listToMarkup()\n\t\t# print(result)\n\n\n\tdef exec_(self):\n\t\tpass \n\nif __name__ == '__main__':\n\tm = Main()\n\tm.exec_()",
 			"file": "src/hen/HtmlToNotefile.py",
+			"file_size": 6917,
+			"file_write_time": 131636951216894772,
 			"settings":
 			{
-				"buffer_size": 6916,
+				"buffer_size": 6882,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "## HEN ##\n\nPython Poort of Wiki-Wiki TextEditor.\n\n",
+			"file": "README.markdown",
+			"file_size": 49,
+			"file_write_time": 131640740261346827,
+			"settings":
+			{
+				"buffer_size": 50,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "MANIFEST.in",
+			"settings":
+			{
+				"buffer_size": 77,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "/[loggers]\nkeys=root,simpleExample\n\n[handlers]\nkeys=consoleHandler\n\n[formatters]\nkeys=simpleFormatter\n\n[logger_root]\nlevel=DEBUG\nhandlers=consoleHandler\n\n[logger_simpleExample]\nlevel=DEBUG\nhandlers=consoleHandler\nqualname=simpleExample\npropagate=0\n\n[handler_consoleHandler]\nclass=StreamHandler\nlevel=DEBUG\nformatter=simpleFormatter\nargs=(sys.stdout,)\n\n[formatter_simpleFormatter]\nformat=%(asctime)s - %(name)s - %(levelname)s - %(message)s\ndatefmt=",
+			"file": "logging.conf",
+			"file_size": 447,
+			"file_write_time": 131480722559661165,
+			"settings":
+			{
+				"buffer_size": 448,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/hen/IO.py",
+			"settings":
+			{
+				"buffer_size": 1154,
 				"line_ending": "Unix"
 			}
 		},
@@ -561,7 +594,7 @@
 			"file": "notes/test3.note",
 			"settings":
 			{
-				"buffer_size": 10186,
+				"buffer_size": 10975,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -676,9 +709,9 @@
 	],
 	"file_history":
 	[
+		"/home/sungyo/Unison/Application/HEN/src/hen/event_type.py",
 		"/home/sungyo/Unison/Application/HEN/notes/test3.note",
 		"/home/sungyo/Unison/Application/HEN/notes/test2_3.note",
-		"/home/sungyo/Unison/Application/HEN/src/hen/event_type.py",
 		"/home/sungyo/Unison/Application/HEN/src/hen/hen.py",
 		"/home/sungyo/Unison/Application/HEN/notes/test.note",
 		"/home/sungyo/Unison/Application/HEN/notes/test2 (사본).note",
@@ -850,7 +883,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -859,15 +892,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2971,
+						"buffer_size": 3172,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								515,
-								515
+								766,
+								766
 							]
 						],
 						"settings":
@@ -879,30 +912,86 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "notes/tag_analyzing.html",
-					"semi_transient": true,
+					"file": "src/hen/HtmlToNotefile.py",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3629,
+						"buffer_size": 6882,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								243,
-								243
+								4140,
+								4140
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2551.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "README.markdown",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 50,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20,
+								20
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "MANIFEST.in",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 77,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20,
+								20
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -912,12 +1001,40 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/hen/HtmlToNotefile.py",
+					"buffer": 4,
+					"file": "logging.conf",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6916,
+						"buffer_size": 448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								448,
+								448
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/hen/IO.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1154,
 						"regions":
 						{
 						},
@@ -934,14 +1051,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 390.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 6,
 					"file": "src/hen/test_full.html",
 					"semi_transient": false,
 					"settings":
@@ -965,16 +1082,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 7,
 					"file": "notes/test3.note",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10186,
+						"buffer_size": 10975,
 						"regions":
 						{
 						},
@@ -993,11 +1110,11 @@
 						"translation.y": 1635.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
 					"semi_transient": false,
 					"settings":
 					{
@@ -1023,7 +1140,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -1109,7 +1226,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 381.0,
 	"status_bar_visible": true,
 	"template_settings":

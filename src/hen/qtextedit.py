@@ -9,30 +9,44 @@ import logging
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
-from reference import key_type
+
+import highlighter
+import reference
+import IO
 
 log = logging.getLogger(__name__)
+key_type = reference.key_type
+Highlighter =  highlighter.Highlighter
+
 def keyCode(code): return key_type[code] if key_type.has_key(code) else code
 
-# class TextEdit(QTextBrowser):
 class TextEdit(QTextEdit):
 	def __init__(self, parent=None):
 		super(TextEdit, self).__init__(parent)
-		self.__defineInstance()
+		self.__defineAttributes()
+		self.__setHighlight()
 		self.__setShortCut()
 		# self.setLayoutDirection(2)
 		self.currentChartFormat = self.currentCharFormat()
+		self.setAcceptRichText(False)
 		self.textChanged.connect(self.typingHandler)
+		self.clipboard = QApplication.clipboard()
 
-	def __defineInstance(self):
+	def __defineAttributes(self):
 		self.is_editing_title = False
 		self.LIST_STYLE_BULLET = -1
 		self.LIST_STYLE_NUMBER = -2
 		self.pressed_key = []
+		self.last_block_number = -1
 
-	def __setShortCut(self):
+	def __setShortCut(self): # in test
 		self.setShortCut(Qt.CTRL + Qt.Key_Return, self.test)
 		self.setShortCut(Qt.SHIFT + Qt.Key_Return, self.test)
+
+	def __setHighlight(self):
+		self.highlight = Highlighter(self.document())
+		self.highlight.addKeyword('class')
+		self.highlight.addKeyword('test for')
 
 	def setShortCut(self, key_assemble, method_to_connect):
 		self.connect(QShortcut(QKeySequence(key_assemble), self), SIGNAL('activated()'), method_to_connect)
@@ -52,13 +66,26 @@ class TextEdit(QTextEdit):
 			self.pressed_key.remove(QKeyEvent.key())
 		QTextEdit.keyReleaseEvent(self, QKeyEvent)
 
-	def keyManager(self, QKeyEvent):
+	def keyManager(self, QKeyEvent): # eventFiltering does now work well, define this.
 		c = self.textCursor()
 		if Qt.Key_Shift in self.pressed_key:
 			if QKeyEvent.key() == Qt.Key_Return:
 				c.insertText('\n')
 				self.removeList(self.textCursor())
 				return True
+
+		# if Qt.Key_Control in self.pressed_key:
+		# 	if QKeyEvent.key() == Qt.Key_C:
+		# 		self.copyText()
+		# 		return True
+
+			elif QKeyEvent.key() == Qt.Key_V:
+				self.pasteText()
+				return True
+
+			# elif QKeyEvent.key() == Qt.Key_X:
+			# 	self.cutText()
+			# 	return True
 
 		if c.blockNumber() == 0:
 			if QKeyEvent.key() == Qt.Key_Return:  # prevent Return Key Commend on Title
@@ -102,6 +129,22 @@ class TextEdit(QTextEdit):
 
 		return False
 
+
+	# def copyText(self):
+	# 	self.copy()
+	# 	# clipboard.
+	#
+	# def cutText(self):
+	# 	self.cut()
+
+	def pasteText(self):
+		if self.clipboard.ownsClipboard: # return True when copied QTextEdit Text.
+			self.setAcceptRichText(True)
+			self.paste()
+			self.setAcceptRichText(False)
+		else:
+			self.paste()
+
 ## methods about indent ##
 
 	def giveList(self, c, move = 0, indent = None):
@@ -136,7 +179,6 @@ class TextEdit(QTextEdit):
 				if indent:
 					setList(indent)
 
-
 	def removeList(self, c):
 		textList = c.currentList()
 		if type(textList) == QTextList:
@@ -146,21 +188,38 @@ class TextEdit(QTextEdit):
 			format.setIndent(0)
 			c.setBlockFormat(format)
 
+	def getLastBlockNumber(self):
+		c = self.textCursor()
+		c.movePosition(c.End)
+		return c.blockNumber()
+
 	def typingHandler(self, event_type = None):
+		pass
+		self._typingHandler_logic(event_type)
+		# IO.chec_time(self._typingHandler_logic, event_type)
+
+	def _typingHandler_logic(self, event_type = None):
 		def setTitle():
+			# return True
 			c.movePosition(c.Start)
 			c.select(QTextCursor.LineUnderCursor)
 			selected_text = c.selectedText()
-			format = c.charFormat()
-			format.setFontPointSize(20)
-			format.setForeground(Qt.blue)
-			format.setFontUnderline(True)
-			c.setCharFormat(format)
-			if selected_text != selected_text.trimmed():
-				c.insertText(selected_text.trimmed())
+			# format = c.charFormat()
+			# format.setFontPointSize(20)
+			# format.setForeground(Qt.blue)
+			# c.setCharFormat(format)
+			selected_text_trimed = selected_text.trimmed()
+			if selected_text != selected_text_trimed:
+				c.insertText(selected_text_trimed)
 		# log.debug('')
 		def wiki_rule():
 			pass
+
+		def updateBlockNumber():
+			current_last_block_number = self.getLastBlockNumber()
+			if current_last_block_number != self.last_block_number:
+				# log.debug('({}, {})'.format(self.textCursor().blockNumber(), current_last_block_number))
+				self.last_block_number = current_last_block_number
 
 		def typing_sensitive():
 			if self.textCursor().atBlockStart():
@@ -190,9 +249,13 @@ class TextEdit(QTextEdit):
 					color = QColor()
 					color.setNamedColor(self.color_white)
 					current_format.setBackground(QBrush(color))
+
 				self.setCurrentCharFormat(current_format)
 
+		# return True
 		c = self.textCursor()
+		updateBlockNumber()
+
 		if c.hasSelection(): return True
 
 		if c.blockNumber() == 0:
@@ -205,8 +268,4 @@ class TextEdit(QTextEdit):
 			self.is_editing_title = False
 			setTitle()
 		if event_type == 'title': return True
-
 		typing_sensitive()
-
-		# print(c.block().text())
-

@@ -151,7 +151,7 @@ event_type = {
 	98:'QEvent.EnabledChange',
 	99:'QEvent.ActivationChange',
 	9:'QEvent.FocusOut',
-}
+} # QEvent.MouseTrackingChange....`
 
 key_type = {
 	0x01000000: 'Qt.Key_Escape',
@@ -571,4 +571,4 @@ key_type = {
 	0x01020004: 'Qt.Key_Sleep',
 	0x01020006: 'Qt.Key_Zoom',
 	0x01020001: 'Qt.Key_Cancel',
-}
+} # Qt.Key_Escape...
