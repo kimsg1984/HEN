@@ -73,8 +73,7 @@ class Main():
 		self.app.installEventFilter(self.editor)
 
 		note = Egg()
-		# note.setFile(os.path.join(notes_dir, 'test2.note'))
-		note.setFile(os.path.join(notes_dir, 'test3.note'))
+		note.setFile(os.path.join(notes_dir, 'test.note'))
 		self.editor.setNote(note)
 		e = self.editor
 		a = self.app
